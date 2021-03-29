@@ -1,0 +1,1 @@
+# This folder contains constants that can be used across the app.

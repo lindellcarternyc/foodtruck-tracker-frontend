@@ -1,0 +1,1 @@
+# This folder contains components that can reused in multiple parts of the App or in different components.
