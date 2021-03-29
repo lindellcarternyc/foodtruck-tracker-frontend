@@ -7,7 +7,19 @@ import SignupPage from './pages/SignupPage'
 import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFound'
 
+import * as apiClient from './api-client'
+import { useEffect } from 'react'
+
 const App = () => {
+  // useEffect(() => {
+  //   apiClient.register({ username: 'Lambda School', email:'email@test.com', password: 'i<3Lambd4', role: 'diner'})
+  //   .then(res => {
+  //     console.log(res)
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+  // }, [])
   return (
     <div className="App">
       <nav>

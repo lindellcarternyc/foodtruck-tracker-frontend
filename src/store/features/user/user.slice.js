@@ -8,10 +8,19 @@ const INITIAL_USER_STATE = {
   isLoading: false
 }
 
-export const register = createAsyncThunk('user/register', async ({ username, password, role }) => {
+export const register = createAsyncThunk('user/register', async ({ username, email, password, role }) => {
   try {
-    const newUser = await apiClient.register({ username, password, role })
+    const newUser = await apiClient.register({ username, password, role, email })
     return newUser
+  } catch (e) {
+    throw e
+  }
+})
+
+export const login = createAsyncThunk('user/login', async ({ username, password }) => {
+  try {
+    const loggedInUser = await apiClient.login({ username, password })
+    return loggedInUser
   } catch (e) {
     throw e
   }
@@ -36,6 +45,21 @@ export const userSlice = createSlice({
         state.error = null
       })
       .addCase(register.rejected, (state, action) => {
+        state.isLoading = false
+        state.user = null
+        state.error = action.payload
+      })
+      .addCase(login.pending, (state) => {
+        state.isLoading = true
+        state.user = null
+        state.error = null
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.user = action.payload
+        state.error = null
+      })
+      .addCase(login.rejected, (state, action) => {
         state.isLoading = false
         state.user = null
         state.error = action.payload
