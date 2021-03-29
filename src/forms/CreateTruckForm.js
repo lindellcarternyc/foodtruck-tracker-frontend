@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import * as yup from 'yup';
 
 const defaultValues = {
     imageURL: '',
@@ -6,14 +7,46 @@ const defaultValues = {
     cuisine: '',
 }
 
-// Still needs validation
+const defaultErrors = {
+    image: '',
+    cuisine: '',
+}
+
+// UNTESTED SCHEMA --- tried to get it to require either url OR upload
+
+// const schema = yup.object().shape({
+//     imageURL: yup.string().trim().url()
+//         .when('imageUpload', {
+//             is: (imageUpload) => !imageUpload,
+//             then: yup.string().trim().url().required('Image upload or URL required'),
+//             otherwise: yup.string()
+//         }),
+//     imageUpload: yup.mixed()
+//         .when('imageURL', {
+//             is: (imageURL) => !imageURL || imageURL.length === 0,
+//             then: yup.mixed().required('Image upload or URL required'),
+//             otherwise: yup.mixed()
+//         }),
+//     cuisine: yup.string()
+//         .trim()
+//         .required('Cuisine type is required')
+//         .min(4, `Must be more than 4 characters`)
+//         .max(20, `Must be more than 4 characters`),
+// }, [['imageURL', 'imageUpload']]);
+
+
 
 export default function CreateTruckForm(props) {
     const { onSubmit, isLoading } = props;
 
-    const [formValues, setFormValues] = useState(defaultValues);
+    const [values, setValues] = useState(defaultValues);
+    const [errors, setErrors] = useState(defaultErrors);
+    const [disableSubmit, setDisableSubmit] = useState(true);
 
     const handleChange = evt => {
+
+        // const { name, value, files } = evt.target;
+
         const getValue = target => {
             switch(target.name) {
                 case 'imageUpload':
@@ -22,14 +55,30 @@ export default function CreateTruckForm(props) {
                     return target.value;
             }
         }
-        setFormValues({
-            ...formValues,
+        setValues({
+            ...values,
             [evt.target.name]: getValue(evt.target),
         })
+
+        // yup.reach(schema, name)
+        //     .validate(value)
+        //     .then(_ => {
+        //         setErrors({
+        //             ...errors,
+        //             [name]: '',
+        //         })
+        //     })
+        //     .catch(err => {
+        //         setErrors({
+        //             ...errors,
+        //             [name]: err.errors[0]
+        //         })
+        //         setDisableSubmit(true)
+        //     })
     }
 
     const clearForm = () => {
-        setFormValues(defaultValues);
+        setValues(defaultValues);
     }
     
     return (
@@ -40,9 +89,9 @@ export default function CreateTruckForm(props) {
                 type='url'
                 name='imageURL'
                 id='imageURL'
-                value={formValues.imageURL}
+                value={values.imageURL}
                 onChange={handleChange}
-                disabled={!!formValues.imageUpload}
+                disabled={!!values.imageUpload}
             />
 
             <p>OR</p>
@@ -54,17 +103,21 @@ export default function CreateTruckForm(props) {
                 id='imageUpload'
                 accept='image/*'
                 onChange={handleChange}
-                disabled={!!formValues.imageURL}
+                disabled={!!values.imageURL}
             />
+
+            {errors.image && <p>errors.image</p>}
 
             <label htmlFor='cuisine' >Cuisine Type</label>
             <input
                 type='text'
                 name='cuisine'
                 id='cuisine'
-                value={formValues.cuisine}
+                value={values.cuisine}
                 onChange={handleChange}
             />
+
+            {errors.cuisine && <p>errors.cuisine</p>}
 
             <button type='reset' onClick={clearForm}>Clear</button>
             <button type='submit' >Submit</button>
