@@ -8,8 +8,6 @@ import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFound'
 import CreateTruckPage from './pages/CreateTruckPage'
 
-console.log(process.env)
-
 const App = () => {
   return (
     <div className="App">
