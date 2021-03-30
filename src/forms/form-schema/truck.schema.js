@@ -22,12 +22,10 @@ const IMAGE_URL_SCHEMA = yup.string()
   )
   .when(['imageUpload'], {
     is: imageUpload => !imageUpload,
-    then: yup.string().required('Please include an image url')
+    then: yup.string().required('Please enter an image URL')
   })
 
-const IMAGE_UPLOAD_SCHEMA = yup.string()
-  .trim()
-  .url()
+const IMAGE_UPLOAD_SCHEMA = yup.mixed()
   .test(
     'only one image value',
     'Only add and image file or an image url',
@@ -41,7 +39,7 @@ const IMAGE_UPLOAD_SCHEMA = yup.string()
   )
   .when(['imageUrl'], {
     is: imageUrl => !imageUrl,
-    then: yup.string().required('Please select an image file')
+    then: yup.mixed().required('Please select an image file')
   })
 
 export const CREATE_TRUCK_SCHEMA = yup.object().shape({
@@ -49,14 +47,3 @@ export const CREATE_TRUCK_SCHEMA = yup.object().shape({
   imageUrl: IMAGE_URL_SCHEMA,
   imageUpload: IMAGE_UPLOAD_SCHEMA,
 }, [['imageUpload', 'imageUrl']])
-
-CREATE_TRUCK_SCHEMA.validate({
-  imageUpload: 'blob://hello.com',
-  // imageUrl: 'http://hello.com'
- })
-  .then(obj => {
-    console.log('valid obj', obj)
-  })
-  .catch(err => {
-    console.log('invalid ', err)
-  })

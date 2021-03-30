@@ -1,6 +1,6 @@
 import { ErrorMessage } from 'formik'
 
-const FormFileInput = ({ id, labelText, onChange, onBlur, disabled, value  }) => {
+const FormFileInput = ({ id, labelText, onChange, disabled, onBlur }) => {
   const handleChange = (evt) => {
 
     onChange(evt.currentTarget.files[0])
@@ -9,7 +9,14 @@ const FormFileInput = ({ id, labelText, onChange, onBlur, disabled, value  }) =>
   return (
     <div>
       <label htmlFor={id}>{labelText}: </label>
-      <input id={id} name={id} onChange={handleChange} type="file" onBlur={onBlur} disabled={disabled} value={value}/>
+      <input 
+        id={id} 
+        name={id} 
+        onChange={handleChange} 
+        onBlur={onBlur}
+        type="file"
+        disabled={disabled} 
+      />
       <ErrorMessage name={id} component="div" />
     </div>
   )
