@@ -1,5 +1,5 @@
 import { Formik, Form } from 'formik'
-import * as yup from 'yup'
+import { SIGNUP_FORM_SCHEMA } from './form-schema/auth.schema'
 
 import FormInput from './components/FormInput'
 import FormSelect from './components/FormSelect'
@@ -11,27 +11,6 @@ const INITIAL_FORM_VALUES = {
   confirmPassword: '',
   role: 'DINER'
 }
-
-const SIGNUP_FORM_SCHEMA = yup.object().shape({
-  username: yup.string()
-    .required('Please enter a username')
-    .min(5, 'A username must be at least 5 characters long')
-    .max(10, 'A username must be 10 characters or less'),
-  email: yup.string()
-    .required('Please enter your email address')
-    .email('Please enter a valid email address'),
-  password: yup.string()
-    .required('Please enter a password')
-    .min(7, 'A password must be at least 7 characters')
-    .max(14, 'A password must be 14 characters or less'),
-  confirmPassword: yup.string()
-    .required('Please re-enter your password')
-    .min(7, 'A password must be at least 7 characters')
-    .max(14, 'A password must be 14 characters or less')
-    .oneOf([yup.ref('password')], 'Your passwords don\'t match'),
-  role: yup.string()
-    .oneOf(['DINER', 'OPERATOR'])
-})
 
 
 const SignupForm = (props) => {
