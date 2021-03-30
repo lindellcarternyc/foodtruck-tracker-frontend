@@ -32,7 +32,6 @@ const CreateTruckForm = (props) => {
           }
 
           const isSubmitDisabled = isSubmitting || !isValid || isLoading || Object.keys(touched).length === 0
-          console.log(isValid, values)
 
           return (
             <Form>

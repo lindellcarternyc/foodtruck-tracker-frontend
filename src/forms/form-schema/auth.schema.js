@@ -2,7 +2,7 @@ import * as yup from 'yup'
 
 const USERNAME_SCHEMA = yup.string()
   .required('Please enter a username')
-  .min(5, 'A username must be at least 5 characters long')
+  .min(3, 'A username must be at least 3 characters long')
   .max(10, 'A username must be 10 characters or less')
 
 const PASSWORD_SCHEMA = yup.string()
