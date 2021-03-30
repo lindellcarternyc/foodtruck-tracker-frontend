@@ -14,7 +14,7 @@ import FavoritesPage from './pages/FavoritesPage'
 import TruckPage from './pages/TruckPage'
 import EditTruckPage from './pages/EditTruckPage'
 import MenuItemPage from './pages/MenuItemPage'
-import CreateMenutItemPage from './pages/CreateMenuItemPage'
+import CreateMenuItemPage from './pages/CreateMenuItemPage'
 import EditMenuItemPage from './pages/EditMenuItemPage'
 import UserInfoPage from './pages/UserInfoPage'
 import EditUserInfoPage from './pages/EditUserInfoPage'
@@ -52,14 +52,14 @@ const App = () => {
         <PrivateRoute 
           roles={[USER_ROLES.OPERATOR]}
           path={ROUTES.CREATE_MENU_ITEM} 
-          component={CreateMenutItemPage} 
+          component={CreateMenuItemPage} 
         />
         <PrivateRoute path={ROUTES.VIEW_MENU_ITEM} component={MenuItemPage} />
 
+        <PrivateRoute roles={[USER_ROLES.OPERATOR]} path={ROUTES.EDIT_TRUCK} component={EditTruckPage} />
         <PrivateRoute roles={[USER_ROLES.OPERATOR]} exact path={ROUTES.CREATE_TRUCK} component={CreateTruckPage}/>
         <PrivateRoute roles={[USER_ROLES.OPERATOR]} path={ROUTES.VIEW_TRUCK} component={TruckPage} />
-        <PrivateRoute roles={[USER_ROLES.OPERATOR]} path={ROUTES.EDIT_TRUCK} component={EditTruckPage} />
-
+        
         <PrivateRoute exact path={ROUTES.USER_INFO} component={UserInfoPage} />
         <PrivateRoute path={ROUTES.EDIT_USER} component={EditUserInfoPage} />
 
@@ -70,4 +70,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default App
