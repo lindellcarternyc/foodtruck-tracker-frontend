@@ -2,6 +2,10 @@ import { Link, Route, Switch } from 'react-router-dom'
 
 import * as ROUTES from './constants/routes'
 
+import { ThemeProvider } from 'styled-components';
+import { Theme } from './components/styled/theme';
+import GlobalStyle from './components/styled/Global';
+
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import HomePage from './pages/HomePage'

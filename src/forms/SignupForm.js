@@ -4,6 +4,8 @@ import { SIGNUP_FORM_SCHEMA } from './form-schema/auth.schema'
 import FormInput from './components/FormInput'
 import FormSelect from './components/FormSelect'
 
+import Button from '../components/styled/Button'
+
 const INITIAL_FORM_VALUES = {
   username: '',
   email: '',
