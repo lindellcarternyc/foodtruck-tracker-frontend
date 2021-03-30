@@ -6,31 +6,24 @@ import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFound'
+import CreateTruckPage from './pages/CreateTruckPage'
 
-import * as apiClient from './api-client'
-import { useEffect } from 'react'
+console.log(process.env)
 
 const App = () => {
-  // useEffect(() => {
-  //   apiClient.register({ username: 'Lambda School', email:'email@test.com', password: 'i<3Lambd4', role: 'diner'})
-  //   .then(res => {
-  //     console.log(res)
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
-  // }, [])
   return (
     <div className="App">
       <nav>
         <Link to={ROUTES.HOME}>HOME</Link>{' '}
         <Link to={ROUTES.LOGIN}>LOGIN</Link>{' '}
-        <Link to={ROUTES.SIGNUP}>SIGNUP</Link>
+        <Link to={ROUTES.SIGNUP}>SIGNUP</Link>{' '}
+        <Link to={ROUTES.CREATE_TRUCK}>CREATE TRUCK</Link>
       </nav>
       <Switch>
         <Route exact path={ROUTES.HOME} component={HomePage} />
         <Route exact path={ROUTES.LOGIN} component={LoginPage} />
         <Route exact path={ROUTES.SIGNUP} component={SignupPage} />
+        <Route exact path={ROUTES.CREATE_TRUCK} component={CreateTruckPage}/>
         <Route component={NotFoundPage} />
       </Switch>
     </div>

@@ -1,122 +1,60 @@
-import React, { useState } from 'react';
-import * as yup from 'yup';
+import { Formik, Form } from 'formik'
 
-const defaultValues = {
-    imageURL: '',
-    imageUpload: null,
-    cuisine: '',
+import { CREATE_TRUCK_SCHEMA } from './form-schema/truck.schema'
+import FormFileInput from './components/FormFileInput'
+import FormInput from './components/FormInput'
+
+const INITIAL_FORM_VALUES = {
+  imageURL: '',
+  imageUpload: null,
+  cuisine: '',
 }
 
-const defaultErrors = {
-    imageURL: '',
-    cuisine: '',
-}
+const CreateTruckForm = (props) => {
+  const { submit, isLoading } = props
+  return (
+    <div>
+      <h2>Create Truck</h2>
+      <Formik
+        initialValues={INITIAL_FORM_VALUES}
+        onSubmit={submit}
+        validationSchema={CREATE_TRUCK_SCHEMA}
+      >
+        {({ resetForm, setFieldValue, values, isSubmitting, isValid, touched, handleBlur }) => {
+          const onChangeImageUpload = (imageFile) => {
+            if (!imageFile) {
+              setFieldValue('imageUpload', null)
+              setFieldValue('imageURL', INITIAL_FORM_VALUES.imageURL)
+            } else {
+              setFieldValue('imageUpload', imageFile)
+              setFieldValue('imageURL', URL.createObjectURL(imageFile))
+            }
+          }
 
-const schema = yup.object().shape({
-    imageURL: yup.string().trim().url()
-        .required('Image upload or URL required'),
-    cuisine: yup.string().trim()
-        .required('Cuisine type is required')
-        .min(4, `Must be more than 4 characters`)
-        .max(20, 'Must be less than 20 characters')
-})
+          const isSubmitDisabled = isSubmitting || !isValid || isLoading || Object.keys(touched).length === 0
+          console.log(isValid, values)
 
-export default function CreateTruckForm(props) {
-    const { onSubmit, isLoading } = props;
-
-    const [values, setValues] = useState(defaultValues);
-    const [errors, setErrors] = useState(defaultErrors);
-    const [disableSubmit, setDisableSubmit] = useState(true);
-
-    const handleChange = evt => {
-        const { name, value, files } = evt.target;
-
-        // If evt name is imageUpload, setValues to spread values, modifying imageUpload and imageURL:
-        //     If files.length > 0, sets imageUpload to file object and imageURL to URL of file object
-        //     If files.length = 0 (empty upload), set imageUpload and imageURL to default values
-        // Otherwise does normal setValues
-        if (name === 'imageUpload') {
-            setValues({
-                ...values,
-                [name]: files.length 
-                    ? files[0] 
-                    : defaultValues[[name]],
-                imageURL: files.length 
-                    ? URL.createObjectURL(files[0]) 
-                    : defaultValues.imageURL,
-            })
-        }
-        else {
-            setValues({
-                ...values,
-                [name]: value,
-            })
-        }
-
-        // yup.reach(schema, name)
-        //     .validate(value)
-        //     .then(_ => {
-        //         setErrors({
-        //             ...errors,
-        //             [name]: '',
-        //         })
-        //     })
-        //     .catch(err => {
-        //         setErrors({
-        //             ...errors,
-        //             [name]: err.errors[0]
-        //         })
-        //         setDisableSubmit(true)
-        //     })
-    }
-
-    const clearForm = () => {
-        setValues(defaultValues);
-    }
-    
-    return (
-        <form onSubmit={onSubmit}>
-
-            <img src={values.imageURL} alt='' />
-            <p>current imageURL: {values.imageURL}</p>
-
-            <label htmlFor='imageURL' >Image URL</label>
-            <input
-                type='url'
-                name='imageURL'
-                id='imageURL'
-                value={values.imageUpload ? '' : values.imageURL}
-                onChange={handleChange}
-                disabled={!!values.imageUpload}
-            />
-
-            <p>OR</p>
-
-            <label htmlFor='imageUpload' >Upload Image</label>
-            <input
-                type='file'
-                name='imageUpload'
-                id='imageUpload'
-                accept='image/*'
-                onChange={handleChange}
+          return (
+            <Form>
+              <img src={values.imageURL} alt="upload preview"/>
+              <p>Current image URL: {values.imageURL}</p>
+              <FormFileInput 
+                id="imageUpload" 
+                labelText="Image upload" 
+                onChange={onChangeImageUpload} 
+                onBlur={handleBlur}
                 disabled={values.imageURL && !values.imageURL.startsWith('blob:')}
-            />
-
-            {errors.imageURL && <p>{errors.imageURL}</p>}
-
-            <label htmlFor='cuisine' >Cuisine Type</label>
-            <input
-                type='text'
-                name='cuisine'
-                id='cuisine'
-                value={values.cuisine}
-                onChange={handleChange}
-            />
-
-            {errors.cuisine && <p>{errors.cuisine}</p>}
-
-            <button type='reset' onClick={clearForm}>Clear</button>
-            <button type='submit' >Submit</button>
-        </form>
-    )
+              />
+              <FormInput id="imageURL" labelText="Image Url" disabled={!!values.imageUpload} />
+              <FormInput id="cuisine" labelText="Cuisine" />
+              <button type='reset' onClick={resetForm}>Clear</button>
+              <button type='submit' disabled={isSubmitDisabled}>Submit</button>
+            </Form>
+          )
+        }}
+      </Formik>
+    </div>
+  )
 }
+
+export default CreateTruckForm

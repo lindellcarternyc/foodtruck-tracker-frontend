@@ -12,7 +12,6 @@ const LoginPage = ({ history }) => {
 
   return (
     <div>
-      <h2>Login</h2>
       <LoginForm isLoading={isLoading} submit={onLogin} />
     </div>
   )
