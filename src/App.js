@@ -20,14 +20,9 @@ import EditUserInfoPage from './pages/EditUserInfoPage'
 import PrivateRoute from './components/PrivateRoute'
 
 const App = () => {
-  // console.log(Object.keys(ROUTES))
   return (
     <div className="App">
       <nav>
-        {/* <Link to={ROUTES.HOME}>HOME</Link>{' '}
-        <Link to={ROUTES.LOGIN}>LOGIN</Link>{' '}
-        <Link to={ROUTES.SIGNUP}>SIGNUP</Link>{' '}
-        <Link to={ROUTES.CREATE_TRUCK}>CREATE TRUCK</Link> */}
         {Object.keys(ROUTES).map(path => {
           return <span key={path}><Link to={ROUTES[path]}>{path}</Link> </span>
         })}
