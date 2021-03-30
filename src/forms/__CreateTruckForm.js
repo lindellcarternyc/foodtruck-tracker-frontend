@@ -44,7 +44,7 @@ export default function CreateTruckForm(props) {
     const [disableSubmit, setDisableSubmit] = useState(true);
 
     const handleChange = evt => {
-
+      console.log(evt.target)
         // const { name, value, files } = evt.target;
 
         const getValue = target => {
@@ -81,7 +81,9 @@ export default function CreateTruckForm(props) {
         setValues(defaultValues);
     }
     
+    console.log(values)
     return (
+      
         <form onSubmit={onSubmit}>
 
             <label htmlFor='imageURL' >Image URL</label>

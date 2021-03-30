@@ -51,8 +51,8 @@ export const CREATE_TRUCK_SCHEMA = yup.object().shape({
 }, [['imageUpload', 'imageUrl']])
 
 CREATE_TRUCK_SCHEMA.validate({
-  // imageUpload: 'http://hello.com',
-  imageUrl: 'http://hello.com'
+  imageUpload: 'blob://hello.com',
+  // imageUrl: 'http://hello.com'
  })
   .then(obj => {
     console.log('valid obj', obj)
