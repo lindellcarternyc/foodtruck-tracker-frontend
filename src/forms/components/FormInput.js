@@ -1,6 +1,6 @@
 import { Field, ErrorMessage } from 'formik'
 
-const FormInput = ({ id, labelText, type }) => {
+const FormInput = ({ id, labelText, type, disabled }) => {
   return (
     <div>
       <label htmlFor={id}>{labelText}: </label>
@@ -8,6 +8,7 @@ const FormInput = ({ id, labelText, type }) => {
         name={id}
         id={id}
         type={type}
+        disabled={disabled}
       />
       <ErrorMessage 
         name={id}
