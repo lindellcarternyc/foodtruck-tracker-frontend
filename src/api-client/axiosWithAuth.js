@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { getToken } from './utils'
-
-const BASE_URL = process.env.REACT_APP_API_BASE_URL
+import { BASE_URL } from '../constants/api'
 
 export const axiosWithAuth = () => {
   const token = getToken()
