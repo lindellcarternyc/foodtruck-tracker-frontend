@@ -6,16 +6,21 @@ import SignupForm from '../forms/SignupForm'
 const SignupPage = () => {
   const isLoading = useSelector(store => store.user.isLoading)
   const dispatch = useDispatch()
-  const onSignup = (data) => {
+  const onSignup = async (data) => {
     dispatch(register(data))
+      .then(res => {
+        console.log(res.payload)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      
   }
 
   return (
     <div>
-      <h2>Sign Up</h2>
       <SignupForm isLoading={isLoading} submit={onSignup} />
     </div>
-    // FORM is 
   )
 }
 
