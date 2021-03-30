@@ -8,6 +8,12 @@ import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFound'
 import CreateTruckPage from './pages/CreateTruckPage'
 
+// Icon imports
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+library.add(faSpinner)
+
+
 console.log(process.env)
 
 const App = () => {
