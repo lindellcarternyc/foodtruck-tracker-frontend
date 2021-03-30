@@ -16,6 +16,8 @@ import EditMenuItemPage from './pages/EditMenuItemPage'
 import UserInfoPage from './pages/UserInfoPage'
 import EditUserInfoPage from './pages/EditUserInfoPage'
 
+import PrivateRoute from './components/PrivateRoute'
+
 const App = () => {
   // console.log(Object.keys(ROUTES))
   return (
@@ -34,19 +36,20 @@ const App = () => {
         <Route exact path={ROUTES.HOME} component={HomePage} />
         <Route exact path={ROUTES.LOGIN} component={LoginPage} />
         <Route exact path={ROUTES.SIGNUP} component={SignupPage} />
-        <Route exact path={ROUTES.DINER_FAVORITES} component={FavoritesPage}/>
+        
+        <PrivateRoute exact path={ROUTES.DINER_FAVORITES} component={FavoritesPage}/>
         
         {/* OPERATOR ROUTES */}
-        <Route path={ROUTES.EDIT_MENU_ITEM} component={EditMenuItemPage} />
-        <Route path={ROUTES.CREATE_MENU_ITEM} component={CreateMenutItemPage} />
-        <Route path={ROUTES.VIEW_MENU_ITEM} component={MenuItemPage} />
+        <PrivateRoute path={ROUTES.EDIT_MENU_ITEM} component={EditMenuItemPage} />
+        <PrivateRoute path={ROUTES.CREATE_MENU_ITEM} component={CreateMenutItemPage} />
+        <PrivateRoute path={ROUTES.VIEW_MENU_ITEM} component={MenuItemPage} />
 
-        <Route exact path={ROUTES.CREATE_TRUCK} component={CreateTruckPage}/>
-        <Route path={ROUTES.VIEW_TRUCK} component={TruckPage} />
-        <Route path={ROUTES.EDIT_TRUCK} component={EditTruckPage} />
+        <PrivateRoute exact path={ROUTES.CREATE_TRUCK} component={CreateTruckPage}/>
+        <PrivateRoute path={ROUTES.VIEW_TRUCK} component={TruckPage} />
+        <PrivateRoute path={ROUTES.EDIT_TRUCK} component={EditTruckPage} />
 
-        <Route exact path={ROUTES.USER_INFO} component={UserInfoPage} />
-        <Route path={ROUTES.EDIT_USER} component={EditUserInfoPage} />
+        <PrivateRoute exact path={ROUTES.USER_INFO} component={UserInfoPage} />
+        <PrivateRoute path={ROUTES.EDIT_USER} component={EditUserInfoPage} />
 
         {/* MENU ROUTES */}
         <Route component={NotFoundPage} />
