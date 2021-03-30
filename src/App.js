@@ -1,4 +1,6 @@
 import { Link, Route, Switch } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 import * as ROUTES from './constants/routes'
 import * as USER_ROLES from './constants/user-roles'
@@ -18,8 +20,15 @@ import UserInfoPage from './pages/UserInfoPage'
 import EditUserInfoPage from './pages/EditUserInfoPage'
 
 import PrivateRoute from './components/PrivateRoute'
+import { getCurrentUser } from './store/features/user/user.slice'
 
 const App = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getCurrentUser())
+  }, [dispatch])
+
   return (
     <div className="App">
       <nav>

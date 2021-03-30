@@ -1,12 +1,12 @@
 import axios from 'axios'
+import { setToken } from './utils'
 
 export const register = async ({ username, password, role, email }) => {
   axios.post("https://tt42-foodtrucktrackr.herokuapp.com/api/users/user/register",
     { username, password, role, email },
 	)
   .then(res => {
-    console.log(res)
-    return res
+    setToken(res.data.access_token)
   })
   .catch(err => {
     console.log(err)
@@ -23,7 +23,7 @@ export const login = async ({ username, password }) => {
 			},
 		},
 	).then(res => {
-    window.localStorage.setItem('food-tracker-token', res.data.access_token)
+    setToken(res.data.access_token)
   })
   .catch(err => {
     console.log(err)

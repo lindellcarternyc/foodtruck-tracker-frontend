@@ -8,6 +8,15 @@ const INITIAL_USER_STATE = {
   isLoading: false
 }
 
+export const getCurrentUser = createAsyncThunk('user/getCurrentUser', async () => {
+  try {
+    const currentUser = await apiClient.fetchCurrentUser()
+    return currentUser
+  } catch (e) {
+    throw e
+  }
+})
+
 export const register = createAsyncThunk('user/register', async ({ username, email, password, role }) => {
   try {
     const newUser = await apiClient.register({ username, password, role, email })
@@ -36,30 +45,38 @@ export const userSlice = createSlice({
     builder
       .addCase(register.pending, (state) => {
         state.isLoading = true
-        state.user = null
         state.error = null
       })
       .addCase(register.fulfilled, (state, action) => {
         state.isLoading = false
-        state.user = action.payload
         state.error = null
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false
-        state.user = null
         state.error = action.payload
       })
       .addCase(login.pending, (state) => {
         state.isLoading = true
-        state.user = null
         state.error = null
       })
-      .addCase(login.fulfilled, (state, action) => {
+      .addCase(login.fulfilled, (state) => {
         state.isLoading = false
-        state.user = action.payload
         state.error = null
       })
       .addCase(login.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload
+      })
+      .addCase(getCurrentUser.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(getCurrentUser.fulfilled, (state, action) => {
+        state.error = null
+        state.isLoading = false
+        state.user = action.payload
+      })
+      .addCase(getCurrentUser.rejected, (state, action) => {
         state.isLoading = false
         state.user = null
         state.error = action.payload
