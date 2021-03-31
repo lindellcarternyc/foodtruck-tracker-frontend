@@ -1,20 +1,21 @@
-import { Formik, Form } from 'formik'
+import { Formik } from 'formik'
 import FormInput from './components/FormInput'
 import { LOGIN_FORM_SCHEMA } from './form-schema/auth.schema'
+import Form from '../components/styled/Form'
 
 const INITIAL_FORM_VALUES = {
   username: '',
   password: ''
 }
 
-const LoginForm = ({ submit, isLoading }) => {
+const LoginForm = ({ onSubmit, isLoading }) => {
   return (
     <div>
       <h2>Login</h2>
       <Formik
         initialValues={INITIAL_FORM_VALUES}
         validationSchema={LOGIN_FORM_SCHEMA}
-        onSubmit={submit} 
+        onSubmit={onSubmit} 
       >
         {({ isValid, isSubmitting, touched }) => {
           const isDisabled = isLoading || !isValid || isSubmitting || Object.keys(touched).length === 0

@@ -2,6 +2,10 @@ import { Link, Route, Switch } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
+import { ThemeProvider } from 'styled-components'
+import { Theme } from './components/styled/theme'
+import GlobalStyle from './components/styled/Global'
+
 import * as ROUTES from './constants/routes'
 import * as USER_ROLES from './constants/user-roles'
 
@@ -36,43 +40,46 @@ const App = () => {
       })
   }, [dispatch])
   return (
-    <div className="App">
-      <nav>
-        {Object.keys(ROUTES).map(path => {
-          return <span key={path}><Link to={ROUTES[path]}>{path}</Link> </span>
-        })}
-      </nav>
-      <Switch>
-        {/* BASE ROUTES */}
-        <Route exact path={ROUTES.HOME} component={HomePage} />
-        <Route exact path={ROUTES.LOGIN} component={LoginPage} />
-        <Route exact path={ROUTES.SIGNUP} component={SignupPage} />
+    <ThemeProvider theme={Theme}>
+      <GlobalStyle />
+      <div>
+        <nav>
+          {Object.keys(ROUTES).map(path => {
+            return <span key={path}><Link to={ROUTES[path]}>{path}</Link> </span>
+          })}
+        </nav>
+        <Switch>
+          {/* BASE ROUTES */}
+          <Route exact path={ROUTES.HOME} component={HomePage} />
+          <Route exact path={ROUTES.LOGIN} component={LoginPage} />
+          <Route exact path={ROUTES.SIGNUP} component={SignupPage} />
 
-        <PrivateRoute roles={[USER_ROLES.DINER]} exact path={ROUTES.DINER_FAVORITES} component={FavoritesPage}/>
-        
-        <PrivateRoute 
-          roles={[USER_ROLES.OPERATOR]} 
-          path={ROUTES.EDIT_MENU_ITEM} 
-          component={EditMenuItemPage} 
-        />
-        <PrivateRoute 
-          roles={[USER_ROLES.OPERATOR]}
-          path={ROUTES.CREATE_MENU_ITEM} 
-          component={CreateMenuItemPage} 
-        />
-        <PrivateRoute path={ROUTES.VIEW_MENU_ITEM} component={MenuItemPage} />
+          <PrivateRoute roles={[USER_ROLES.DINER]} exact path={ROUTES.DINER_FAVORITES} component={FavoritesPage}/>
+          
+          <PrivateRoute 
+            roles={[USER_ROLES.OPERATOR]} 
+            path={ROUTES.EDIT_MENU_ITEM} 
+            component={EditMenuItemPage} 
+          />
+          <PrivateRoute 
+            roles={[USER_ROLES.OPERATOR]}
+            path={ROUTES.CREATE_MENU_ITEM} 
+            component={CreateMenuItemPage} 
+          />
+          <PrivateRoute path={ROUTES.VIEW_MENU_ITEM} component={MenuItemPage} />
 
-        <PrivateRoute roles={[USER_ROLES.OPERATOR]} path={ROUTES.EDIT_TRUCK} component={EditTruckPage} />
-        <PrivateRoute roles={[USER_ROLES.OPERATOR]} exact path={ROUTES.CREATE_TRUCK} component={CreateTruckPage}/>
-        <PrivateRoute roles={[USER_ROLES.OPERATOR]} path={ROUTES.VIEW_TRUCK} component={TruckPage} />
-        
-        <PrivateRoute exact path={ROUTES.USER_INFO} component={UserInfoPage} />
-        <PrivateRoute path={ROUTES.EDIT_USER} component={EditUserPage} />
+          <PrivateRoute roles={[USER_ROLES.OPERATOR]} path={ROUTES.EDIT_TRUCK} component={EditTruckPage} />
+          <PrivateRoute roles={[USER_ROLES.OPERATOR]} exact path={ROUTES.CREATE_TRUCK} component={CreateTruckPage}/>
+          <PrivateRoute roles={[USER_ROLES.OPERATOR]} path={ROUTES.VIEW_TRUCK} component={TruckPage} />
+          
+          <PrivateRoute exact path={ROUTES.USER_INFO} component={UserInfoPage} />
+          <PrivateRoute path={ROUTES.EDIT_USER} component={EditUserPage} />
 
-        {/* MENU ROUTES */}
-        <Route component={NotFoundPage} />
-      </Switch>
-    </div>
+          {/* MENU ROUTES */}
+          <Route component={NotFoundPage} />
+        </Switch>
+      </div>
+      </ThemeProvider>
   );
 }
 

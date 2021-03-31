@@ -1,20 +1,23 @@
-import { Field, ErrorMessage } from 'formik'
+import { Field } from 'formik'
+import Input from '../../components/styled/Input'
 
 const FormInput = ({ id, labelText, type, disabled }) => {
   return (
-    <div>
-      <label htmlFor={id}>{labelText}: </label>
       <Field 
         name={id}
-        id={id}
-        type={type}
-        disabled={disabled}
-      />
-      <ErrorMessage 
-        name={id}
-        component="div"
-      />
-    </div>
+      >
+        {({ field, meta }) => {
+          return (
+            <Input
+              type={type}
+              disabled={disabled}
+              labelText={labelText} 
+              {...field} 
+              error={meta.touched && meta.error}
+            />
+          )
+        }}
+      </Field>
   )
 }
 

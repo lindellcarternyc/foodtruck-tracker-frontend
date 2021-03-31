@@ -35,11 +35,11 @@ const InputWrapper = styled.div`
 
 
 export default function TextInput(props) {
-    const { onChange, value, name, type, error, labelText} = props
+    const { onChange, value, name, type, error, labelText, onBlur } = props
     return (
         <InputWrapper error={error}>
             <InputLabel labelText={labelText} name={name} error={error} />
-            <input name={name} onChange={onChange} value={value} type={type} />
+            <input name={name} onChange={onChange} value={value} type={type} onBlur={onBlur} />
         </InputWrapper>
     )
 }
