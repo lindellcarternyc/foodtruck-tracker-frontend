@@ -21,7 +21,7 @@ const LoginPage = ({ history }) => {
 
   return (
     <div>
-      <LoginForm isLoading={isLoading} submit={onLogin} />
+      <LoginForm isLoading={isLoading} onSubmit={onLogin} />
     </div>
   )
 }
