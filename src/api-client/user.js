@@ -21,8 +21,12 @@ export const fetchCurrentUser = async () => {
   }
 }
 
-export const updateUser = async () => {
-
+export const updateUser = async ({ id, username, email }) => {
+  try {
+    const response = await axiosWithAuth().put(`/api/users/user/${id}/update`, { username, email })
+  } catch (e) {
+    
+  }
 }
 
 export const deleteUser = async () => {
