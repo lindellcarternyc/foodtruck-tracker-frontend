@@ -1,5 +1,5 @@
 import { Field } from 'formik'
-import Input from '../../components/styled/Input'
+import TextInput from '../../components/styled/Input'
 
 const FormInput = ({ id, labelText, type, disabled }) => {
   return (
@@ -8,7 +8,7 @@ const FormInput = ({ id, labelText, type, disabled }) => {
       >
         {({ field, meta }) => {
           return (
-            <Input
+            <TextInput
               type={type}
               disabled={disabled}
               labelText={labelText} 

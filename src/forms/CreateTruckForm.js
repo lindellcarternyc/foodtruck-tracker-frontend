@@ -1,6 +1,9 @@
-import { Formik, Form } from 'formik'
+import { Formik} from 'formik'
 
 import { CREATE_TRUCK_SCHEMA } from './form-schema/truck.schema'
+
+import Form from '../components/styled/Form'
+import Button from '../components/styled/Button'
 import FormFileInput from './components/FormFileInput'
 import FormInput from './components/FormInput'
 
@@ -46,8 +49,8 @@ const CreateTruckForm = (props) => {
               />
               <FormInput id="imageURL" labelText="Image Url" disabled={!!values.imageUpload} />
               <FormInput id="cuisine" labelText="Cuisine" />
-              <button type='reset' onClick={resetForm}>Clear</button>
-              <button type='submit' disabled={isSubmitDisabled}>Submit</button>
+              <Button type='reset' onClick={resetForm}>Clear</Button>
+              <Button type='submit' disabled={isSubmitDisabled}>Submit</Button>
             </Form>
           )
         }}
