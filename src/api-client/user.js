@@ -20,3 +20,11 @@ export const fetchCurrentUser = async () => {
     throw err
   }
 }
+
+export const updateUser = async () => {
+
+}
+
+export const deleteUser = async () => {
+
+}
