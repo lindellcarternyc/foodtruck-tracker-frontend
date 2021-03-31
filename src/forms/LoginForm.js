@@ -1,6 +1,8 @@
 import { Formik } from 'formik'
-import FormInput from './components/FormInput'
+
 import { LOGIN_FORM_SCHEMA } from './form-schema/auth.schema'
+
+import FormInput from './components/FormInput'
 import Form from '../components/styled/Form'
 
 const INITIAL_FORM_VALUES = {

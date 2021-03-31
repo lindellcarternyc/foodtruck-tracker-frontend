@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { fetchCurrentUser } from './user'
-// import { ax}
 import { setToken } from './utils'
 
 export const register = async ({ username, password, role, email }) => {
@@ -29,17 +28,9 @@ export const login = async ({ username, password }) => {
     )
     setToken(response.data.access_token)
     const user = await fetchCurrentUser()
+    console.log('fetchCurrentUser: ', user)
     return user
   } catch (err ) {
-    console.log('err')
+    console.log('err', err)
   }
-	// ).then(res => {
-  //   console.log('LOGIN SUCCESSFUL ... setting token')
-  //   setToken(res.data.access_token)
-  //   
-  // })
-  // .catch(err => {
-  //   console.log('loginError')
-  //   console.dir(err)
-  // })
 }

@@ -4,7 +4,7 @@ export const fetchCurrentUser = async () => {
   try {
     const response = await axiosWithAuth().get(`/api/users/user`)
     const { email, menuratings, roles, truckratings, trucks, userid, username } = response.data
-
+    console.log(response)
     const userData = {
       username,
       email,

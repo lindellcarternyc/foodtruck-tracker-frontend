@@ -1,6 +1,7 @@
-import { Formik, Form } from 'formik'
+import { Formik } from 'formik'
 import { SIGNUP_FORM_SCHEMA } from './form-schema/auth.schema'
 
+import Form from '../components/styled/Form'
 import FormInput from './components/FormInput'
 import FormSelect from './components/FormSelect'
 
