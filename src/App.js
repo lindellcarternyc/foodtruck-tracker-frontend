@@ -17,10 +17,11 @@ import MenuItemPage from './pages/MenuItemPage'
 import CreateMenuItemPage from './pages/CreateMenuItemPage'
 import EditMenuItemPage from './pages/EditMenuItemPage'
 import UserInfoPage from './pages/UserInfoPage'
-import EditUserInfoPage from './pages/EditUserInfoPage'
+// import EditUserInfoPage from './pages/EditUserInfoPage'
+import EditUserPage from './pages/EditUserPage'
 
 import PrivateRoute from './components/PrivateRoute'
-import { getCurrentUser } from './store/features/user/user.slice'
+import { getCurrentUser } from './store/features/user'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -61,7 +62,7 @@ const App = () => {
         <PrivateRoute roles={[USER_ROLES.OPERATOR]} path={ROUTES.VIEW_TRUCK} component={TruckPage} />
         
         <PrivateRoute exact path={ROUTES.USER_INFO} component={UserInfoPage} />
-        <PrivateRoute path={ROUTES.EDIT_USER} component={EditUserInfoPage} />
+        <PrivateRoute path={ROUTES.EDIT_USER} component={EditUserPage} />
 
         {/* MENU ROUTES */}
         <Route component={NotFoundPage} />

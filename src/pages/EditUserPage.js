@@ -1,24 +1,30 @@
 import { useDispatch, useSelector } from 'react-redux'
 import EditUserForm from '../forms/EditUserForm'
-import { update } from '../store/features/user/user.slice'
+import { updateUser } from '../store/features/user'
 
-import { USER } from '../constants/routes';
+import * as ROUTES from '../constants/routes';
 
 export default function EditUserPage({ history }) {
-    const user = useSelector(state => state.user)
+    const user = useSelector(state => state.user.user)
     const dispatch = useDispatch()
 
     const onSave = (data) => {
-        dispatch(update(data))
+      dispatch(updateUser(data))
+        .then(res => {
+          console.log('onSaveUpdate: ', res)
+        })
+        .catch(err => {
+          console.log('onSaveUpateErr: ', err)
+        })
     }
 
-    const onCancel = (data) => {
-        history.push(USER);
+    const onCancel = () => {
+        history.push(ROUTES.USER_INFO);
     }
 
     return (
         <div>
-            <EditUserForm />
+            <EditUserForm userToEdit={user} onSubmit={onSave} onCancel={onCancel} />
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import LoginForm from '../forms/LoginForm'
-import { getCurrentUser, login } from '../store/features/user/user.slice'
+import { getCurrentUser, login } from '../store/features/user'
 
 import * as ROUTES from '../constants/routes'
 import { Redirect } from 'react-router'

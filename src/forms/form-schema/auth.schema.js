@@ -39,3 +39,10 @@ export const SIGNUP_FORM_SCHEMA = yup.object().shape({
 export const LOGIN_FORM_SCHEMA = yup.object().shape({
   ...BASE_AUTH_SCHEMA
 })
+
+export const EDIT_USER_FORM_SCHEMA = yup.object().shape({
+  username: USERNAME_SCHEMA,
+  email: EMAIL_SCHEMA,
+  newPassword: yup.string().nullable(),
+  confirmNewPassword: yup.string().nullable().oneOf([yup.ref('newPassword')])
+})
