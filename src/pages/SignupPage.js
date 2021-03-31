@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import * as ROUTES from '../constants/routes'
-import { getCurrentUser, register } from '../store/features/user'
+import { register } from '../store/features/user'
 
 import SignupForm from '../forms/SignupForm'
 
@@ -10,14 +10,11 @@ const SignupPage = ({ history }) => {
   const isLoading = useSelector(store => store.user.isLoading)
   const dispatch = useDispatch()
   const onSignup = async (data) => {
-
-    try {
-      await dispatch(register(data))
-      await dispatch(getCurrentUser())
-      history.push(ROUTES.HOME)
-    } catch (err) {
-      console.log(err)
-    }
+    dispatch(register(data))
+      .then(_ => history.push(ROUTES.HOME))
+      .catch(err => {
+        console.log('ERROR SIGNING UP', err)
+      })
   }
 
   const currentUser = useSelector(state => state.user.user !== null)
