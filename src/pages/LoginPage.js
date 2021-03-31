@@ -1,24 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux'
 import LoginForm from '../forms/LoginForm'
-import { getCurrentUser, login } from '../store/features/user'
+import { login } from '../store/features/user'
 
 import * as ROUTES from '../constants/routes'
 import { Redirect } from 'react-router'
 
 const LoginPage = ({ history }) => {
-  const isLoading = useSelector(state => state.user.isLoading)
+  const isLoading = useSelector(state => state.userState.isLoading)
   const dispatch = useDispatch()
   const onLogin = async (data) => {
     dispatch(login(data))
       .then(_ => {
-        dispatch(getCurrentUser())
-          .then(_ => history.push(ROUTES.HOME))
-          .catch(err => console.log(err))
+        history.push(ROUTES.HOME)
       })
       .catch(err => console.log('err', err))
   }
 
-  const currentUser = useSelector(state => state.user.user !== null)
+  const currentUser = useSelector(state => state.userState.user !== null)
   if (currentUser) return <Redirect to={ROUTES.HOME}/>
 
   return (
