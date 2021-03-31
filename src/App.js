@@ -22,14 +22,15 @@ import EditUserPage from './pages/EditUserPage'
 
 import PrivateRoute from './components/PrivateRoute'
 import { getCurrentUser } from './store/features/user'
+import { axiosWithAuth } from './api-client/axiosWithAuth'
 
 const App = () => {
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(getCurrentUser())
-  }, [dispatch])
-
+  // useEffect(() => {
+  //   dispatch(getCurrentUser())
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
   return (
     <div className="App">
       <nav>

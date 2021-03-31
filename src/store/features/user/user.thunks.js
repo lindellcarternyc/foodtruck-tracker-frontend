@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import * as apiClient from '../../../api-client'
 
 export const getCurrentUser = createAsyncThunk('user/getCurrentUser', async () => {
+  console.log('getCurrentUser')
   try {
     const currentUser = await apiClient.fetchCurrentUser()
     return currentUser

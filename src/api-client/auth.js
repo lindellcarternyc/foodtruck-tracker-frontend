@@ -23,7 +23,9 @@ export const login = async ({ username, password }) => {
 			},
 		},
 	).then(res => {
+    console.log('LOGIN SUCCESSFUL ... setting token')
     setToken(res.data.access_token)
+    console.log('login', 'res', res)
   })
   .catch(err => {
     console.log('loginError')
