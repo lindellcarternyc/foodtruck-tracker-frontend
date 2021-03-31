@@ -17,8 +17,14 @@ export default function EditUserForm(props) {
                 validationSchema={EDIT_USER_FORM_SCHEMA}
                 onSubmit={onSubmit}
             >
-                {({ isValid, touched }) => {
-                    const isFormValid = isValid && Object.keys(touched).length > 0
+                {({ isValid, touched, errors }) => {
+                    // I think this is the one form where touched doesn't have to happen
+                    const isFormValid = isValid  // && Object.keys(touched).length > 0
+                    console.group('Edit User Form Logs')
+                      console.log('isValid', isValid)
+                      console.log('touched', touched)
+                      console.log('errors', errors)
+                    console.groupEnd()
                     return (
                         <Form>
                             <FormInput 
