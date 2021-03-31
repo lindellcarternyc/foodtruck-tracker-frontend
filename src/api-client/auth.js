@@ -26,6 +26,7 @@ export const login = async ({ username, password }) => {
     setToken(res.data.access_token)
   })
   .catch(err => {
-    console.log(err)
+    console.log('loginError')
+    console.dir(err)
   })
 }

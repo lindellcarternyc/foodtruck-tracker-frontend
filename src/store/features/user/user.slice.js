@@ -1,8 +1,4 @@
-import { 
-  // createAsyncThunk, 
-  createSlice } from '@reduxjs/toolkit'
-
-// import * as apiClient from '../../../api-client'
+import { createSlice } from '@reduxjs/toolkit'
 
 import { register, login, getCurrentUser } from './user.thunks'
 
