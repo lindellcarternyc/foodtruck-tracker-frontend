@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import * as ROUTES from '../constants/routes'
-import { getCurrentUser, register } from '../store/features/user/user.slice'
+import { getCurrentUser, register } from '../store/features/user'
 
 import SignupForm from '../forms/SignupForm'
 

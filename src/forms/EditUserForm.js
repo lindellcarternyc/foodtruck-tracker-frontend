@@ -1,24 +1,30 @@
 import { Formik, Form } from 'formik';
 import FormInput from './components/FormInput'
+import { EDIT_USER_FORM_SCHEMA } from './form-schema/auth.schema'
 
-const INITIAL_FORM_VALUES = {
-    // Get from state
-    username: 'dummyUsername',
-    email: 'dummyemail@email.com',
-    newPassword: 'dummyPassword',
-    confirmNewPassword: 'dummyPassword',
-    password: '',
-}
+// const INITIAL_FORM_VALUES = {
+//     // Get from state
+//     username: 'dummyUsername',
+//     email: 'dummyemail@email.com',
+//     newPassword: 'dummyPassword',
+//     confirmNewPassword: 'dummyPassword',
+//     password: '',
+// }
 
 export default function EditUserForm(props) {
-    const { submit, isLoading } = props
+    const { onSubmit, onCancel, userToEdit: { username, email }, isLoading } = props
     return (
         <div>
             <h2>Edit User</h2>
             <Formik 
-                initialValues={INITIAL_FORM_VALUES}
-                validationSchema={/* Schema here */}
-                onSubmit={submit}
+                initialValues={{
+                  username,
+                  email,
+                  newPassword: '',
+                  confirmNewPassword: ''
+                }}
+                validationSchema={EDIT_USER_FORM_SCHEMA}
+                onSubmit={onSubmit}
             >
                 {({ isValid, touched }) => {
                     const isFormValid = isValid && Object.keys(touched).length > 0
@@ -54,7 +60,7 @@ export default function EditUserForm(props) {
                             />
                 
                             <button disabled={!isFormValid || isLoading} type="submit">Save Info</button>
-                            <button disabled={isLoading} type="button" onClick={/* push to /user */}>Cancel</button>
+                            <button disabled={isLoading} type="button" onClick={onCancel}>Cancel</button>
 
                         </Form>
                     )

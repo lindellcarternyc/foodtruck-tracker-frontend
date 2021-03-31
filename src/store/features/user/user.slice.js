@@ -1,39 +1,16 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { 
+  // createAsyncThunk, 
+  createSlice } from '@reduxjs/toolkit'
 
-import * as apiClient from '../../../api-client'
+// import * as apiClient from '../../../api-client'
+
+import { register, login, getCurrentUser } from './user.thunks'
 
 const INITIAL_USER_STATE = {
   user: null,
   error: null,
   isLoading: false
 }
-
-export const getCurrentUser = createAsyncThunk('user/getCurrentUser', async () => {
-  try {
-    const currentUser = await apiClient.fetchCurrentUser()
-    return currentUser
-  } catch (e) {
-    throw e
-  }
-})
-
-export const register = createAsyncThunk('user/register', async ({ username, email, password, role }) => {
-  try {
-    const newUser = await apiClient.register({ username, password, role, email })
-    return newUser
-  } catch (e) {
-    throw e
-  }
-})
-
-export const login = createAsyncThunk('user/login', async ({ username, password }) => {
-  try {
-    const loggedInUser = await apiClient.login({ username, password })
-    return loggedInUser
-  } catch (e) {
-    throw e
-  }
-})
 
 export const userSlice = createSlice({
   name: 'user',
