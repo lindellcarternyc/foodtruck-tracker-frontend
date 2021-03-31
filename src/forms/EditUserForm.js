@@ -2,15 +2,6 @@ import { Formik, Form } from 'formik';
 import FormInput from './components/FormInput'
 import { EDIT_USER_FORM_SCHEMA } from './form-schema/auth.schema'
 
-// const INITIAL_FORM_VALUES = {
-//     // Get from state
-//     username: 'dummyUsername',
-//     email: 'dummyemail@email.com',
-//     newPassword: 'dummyPassword',
-//     confirmNewPassword: 'dummyPassword',
-//     password: '',
-// }
-
 export default function EditUserForm(props) {
     const { onSubmit, onCancel, userToEdit: { username, email }, isLoading } = props
     return (
