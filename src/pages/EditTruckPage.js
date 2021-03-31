@@ -1,3 +1,4 @@
+
 const EditTruckPage = () => {
   return (
     <div>

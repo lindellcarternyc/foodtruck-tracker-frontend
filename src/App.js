@@ -23,6 +23,7 @@ import EditMenuItemPage from './pages/EditMenuItemPage'
 import UserInfoPage from './pages/UserInfoPage'
 import EditUserPage from './pages/EditUserPage'
 
+// import NavBar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
 import { setUser } from './store/features/user'
 import { fetchCurrentUser } from './api-client'

@@ -4,6 +4,7 @@ import { LOGIN_FORM_SCHEMA } from './form-schema/auth.schema'
 
 import FormInput from './components/FormInput'
 import Form from '../components/styled/Form'
+import Button from '../components/styled/Button'
 
 const INITIAL_FORM_VALUES = {
   username: '',
@@ -33,7 +34,7 @@ const LoginForm = ({ onSubmit, isLoading }) => {
                 labelText="Password"
               />
 
-              <button type="submit" disabled={isDisabled}>Login</button>
+              <Button type="submit" disabled={isDisabled}>Login</Button>
             </Form>
           )
         }}

@@ -2,6 +2,7 @@ import { Formik } from 'formik'
 import { SIGNUP_FORM_SCHEMA } from './form-schema/auth.schema'
 
 import Form from '../components/styled/Form'
+import Button from '../components/styled/Button'
 import FormInput from './components/FormInput'
 import FormSelect from './components/FormSelect'
 
@@ -59,7 +60,7 @@ const SignupForm = (props) => {
                   { value: 'OPERATOR', label: 'Operator' }
                 ]}
               />
-              <button disabled={!isFormValid || isLoading} type="submit">Sign Up</button>
+              <Button disabled={!isFormValid || isLoading} type="submit">Sign Up</Button>
             </Form>
           )
         }}

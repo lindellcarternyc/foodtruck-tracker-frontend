@@ -1,6 +1,9 @@
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
 import FormInput from './components/FormInput'
 import { EDIT_USER_FORM_SCHEMA } from './form-schema/auth.schema'
+
+import Form from '../components/styled/Form'
+import Button from '../components/styled/Button'
 
 export default function EditUserForm(props) {
     const { onSubmit, onCancel, userToEdit: { username, email }, isLoading } = props
@@ -56,8 +59,8 @@ export default function EditUserForm(props) {
                                 labelText="Enter Password*"
                             />
                 
-                            <button disabled={!isFormValid || isLoading} type="submit">Save Info</button>
-                            <button disabled={isLoading} type="button" onClick={onCancel}>Cancel</button>
+                            <Button disabled={!isFormValid || isLoading} type="submit">Save Info</Button>
+                            <Button disabled={isLoading} type="button" onClick={onCancel}>Cancel</Button>
 
                         </Form>
                     )
