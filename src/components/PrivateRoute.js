@@ -4,7 +4,7 @@ import * as ROUTES from '../constants/routes'
 import * as USER_ROLES from '../constants/user-roles'
 
 const PrivateRoute = ({ component: Component, roles, redirect, exact, path, ...rest }) => {
-  const currentUser = useSelector(state => state.user.user)
+  const currentUser = useSelector(state => state.userState.user)
 
   const redirectPath = redirect || ROUTES.LOGIN
   const acceptedRoles = roles || [USER_ROLES.OPERATOR, USER_ROLES.DINER]

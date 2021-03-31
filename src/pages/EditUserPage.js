@@ -5,7 +5,7 @@ import { updateUser } from '../store/features/user'
 import * as ROUTES from '../constants/routes';
 
 export default function EditUserPage({ history }) {
-    const user = useSelector(state => state.user.user)
+    const user = useSelector(state => state.userState.user)
     const dispatch = useDispatch()
 
     const onSave = (data) => {

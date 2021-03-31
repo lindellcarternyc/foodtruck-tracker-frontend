@@ -6,7 +6,7 @@ import * as ROUTES from '../constants/routes'
 import { Redirect } from 'react-router'
 
 const LoginPage = ({ history }) => {
-  const isLoading = useSelector(state => state.user.isLoading)
+  const isLoading = useSelector(state => state.userState.isLoading)
   const dispatch = useDispatch()
   const onLogin = async (data) => {
     dispatch(login(data))
@@ -16,7 +16,7 @@ const LoginPage = ({ history }) => {
       .catch(err => console.log('err', err))
   }
 
-  const currentUser = useSelector(state => state.user.user !== null)
+  const currentUser = useSelector(state => state.userState.user !== null)
   if (currentUser) return <Redirect to={ROUTES.HOME}/>
 
   return (

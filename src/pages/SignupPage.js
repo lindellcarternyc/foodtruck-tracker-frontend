@@ -17,7 +17,7 @@ const SignupPage = ({ history }) => {
       })
   }
 
-  const currentUser = useSelector(state => state.user.user !== null)
+  const currentUser = useSelector(state => state.userState.user !== null)
   if (currentUser) return <Redirect to={ROUTES.HOME}/>
 
   return (

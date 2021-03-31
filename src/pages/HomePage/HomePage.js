@@ -8,7 +8,7 @@ import DinerDashboard from './DinerDashboard'
 import OperatorDashboard from './OperatorDashboard'
 
 const HomePage = () => {
-  const currentUser = useSelector(state => state.user.user)
+  const currentUser = useSelector(state => state.userState.user)
   if (!currentUser) {
     return (
       <div>

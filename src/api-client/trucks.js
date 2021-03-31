@@ -5,6 +5,7 @@ export const fetchTrucks = async () => {
     const response = await axiosWithAuth().get(`/api/trucks/trucks`)
     console.log(response)
   } catch (err) {
+    console.log(err)
     throw err
   }
 }
