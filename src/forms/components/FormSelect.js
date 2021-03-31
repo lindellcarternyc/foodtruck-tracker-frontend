@@ -1,16 +1,27 @@
-import { Field, ErrorMessage } from 'formik'
+import { Field } from 'formik'
+import { InputWrapper } from '../../components/styled/Input'
+import InputLabel from '../../components/styled/InputLabel'
 
 const FormSelect = ({ id, labelText, options }) => {
   return (
-    <div>
-      <label htmlFor={id}>{labelText}: </label>
-      <Field as="select" name={id}>
-        {options.map(({ value, label }) => {
-          return <option key={value} value={value}>{label}</option>
-        })}
-      </Field>
-      <ErrorMessage name={id} component="div" />
-    </div>
+    <Field name={id}>
+      {({ field, meta }) => {
+        const error = meta.touched && meta.error
+        return (
+          <InputWrapper error={error}>
+            <InputLabel 
+              labelText={labelText}
+              name={id}
+            />
+            <select {...field} name={id} id={id}>
+              {options.map((o) => {
+                return <option key={o.value} value={o.value}>{o.label}</option>
+              })}
+            </select>
+          </InputWrapper>
+        )
+      }}
+    </Field>
   )
 }
 

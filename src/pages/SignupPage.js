@@ -7,7 +7,7 @@ import { register } from '../store/features/user'
 import SignupForm from '../forms/SignupForm'
 
 const SignupPage = ({ history }) => {
-  const isLoading = useSelector(store => store.user.isLoading)
+  const isLoading = useSelector(store => store.userState.isLoading)
   const dispatch = useDispatch()
   const onSignup = async (data) => {
     dispatch(register(data))

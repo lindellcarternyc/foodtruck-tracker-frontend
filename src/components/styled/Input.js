@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import InputLabel from './InputLabel'
 
-const InputWrapper = styled.div`
+export const InputWrapper = styled.div`
     width: ${props => props.theme.inputWidth};
     margin-bottom: ${props => props.theme.space};
 

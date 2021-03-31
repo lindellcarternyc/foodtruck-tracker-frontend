@@ -10,14 +10,10 @@ const FormWrapper = styled(FormikForm)`
 `
 
 export default function Form(props) {
-    const { children, onSubmit, ...rest } = props
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      console.log(e)
-    }
+    const { children, ...rest } = props
 
     return(
-        <FormWrapper onSubmit={handleSubmit} {...rest}>
+        <FormWrapper  {...rest}>
             {children}
         </FormWrapper>
     )
