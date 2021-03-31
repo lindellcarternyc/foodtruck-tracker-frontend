@@ -17,20 +17,24 @@ import MenuItemPage from './pages/MenuItemPage'
 import CreateMenuItemPage from './pages/CreateMenuItemPage'
 import EditMenuItemPage from './pages/EditMenuItemPage'
 import UserInfoPage from './pages/UserInfoPage'
-// import EditUserInfoPage from './pages/EditUserInfoPage'
 import EditUserPage from './pages/EditUserPage'
 
 import PrivateRoute from './components/PrivateRoute'
-import { getCurrentUser } from './store/features/user'
-import { axiosWithAuth } from './api-client/axiosWithAuth'
+import { setUser } from './store/features/user'
+import { fetchCurrentUser } from './api-client'
 
 const App = () => {
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   dispatch(getCurrentUser())
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
+  useEffect(() => {
+    fetchCurrentUser()
+      .then(user => {
+        dispatch(setUser(user))
+      })
+      .catch(err => {
+        console.log('app:mount:err', err)
+      })
+  }, [dispatch])
   return (
     <div className="App">
       <nav>
