@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux'
 import LoginForm from '../forms/LoginForm'
+
 import { login } from '../store/features/user'
+import { isUserStateLoadingSelector } from '../store/features/user/user.selectors'
 
 import * as ROUTES from '../constants/routes'
 import { Redirect } from 'react-router'
 
-const LoginPage = ({ history }) => {
-  const isLoading = useSelector(state => state.userState.isLoading)
+const LoginPage = ({ history, currentUser }) => {
+  const isLoading = useSelector(isUserStateLoadingSelector)
+
   const dispatch = useDispatch()
   const onLogin = async (data) => {
     dispatch(login(data))
@@ -16,7 +19,6 @@ const LoginPage = ({ history }) => {
       .catch(err => console.log('err', err))
   }
 
-  const currentUser = useSelector(state => state.userState.user !== null)
   if (currentUser) return <Redirect to={ROUTES.HOME}/>
 
   return (

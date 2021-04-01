@@ -5,9 +5,10 @@ import { setTrucks } from '../../store/features/trucks'
 
 import * as ROUTES from '../../constants/routes'
 import { useHistory } from 'react-router'
+import { trucksSelector } from '../../store/features/trucks/trucks.selectors'
 
 const OperatorDashboard = ({ currentUser }) => {
-  const trucks = useSelector(state => state.trucksState.trucks)
+  const trucks = useSelector(trucksSelector)
   const history = useHistory()
   const dispatch = useDispatch()
 
