@@ -86,7 +86,7 @@ export default function NavBar(props) {
     } else {
         return (
             <NavWrapper maxWidth={maxWidth} className={className}>
-                <div id='nav-logo' onClick={() => routeTo('/trucks')}>
+                <div id='nav-logo' onClick={() => routeTo('/trucks/:truckID')}>
                     <img  />
                     <h3>Food Truck TrackR</h3>
                 </div>
@@ -94,6 +94,12 @@ export default function NavBar(props) {
                     {/* {Object.keys(ROUTES).map(path => {
                         return <span key={path}><Button to={ROUTES[path]}>{path}</Button> </span>
                     })} */}
+                    <Button 
+                        children='Homepage'
+                        variant='nav'
+                        size='nav'
+                        onClick={() => routeTo('/')}
+                    />
                     <Button 
                         children='Favorites'
                         variant='nav'
@@ -105,6 +111,12 @@ export default function NavBar(props) {
                         variant='nav'
                         size='nav'
                         onClick={() => routeTo('/trucks/:truckID')} 
+                    />
+                    <Button 
+                        children='Create Truck'
+                        variant='nav'
+                        size='nav'
+                        onClick={() => routeTo('/trucks/new')}
                     />
                     <Button 
                         children='User'
