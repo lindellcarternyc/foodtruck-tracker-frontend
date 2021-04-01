@@ -2,12 +2,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
 import EditTruckForm from '../forms/EditTruckForm'
+import { truckByIdSelector } from '../store/features/trucks/trucks.selectors'
 
 const EditTruckPage = ({ currentUser }) => {
   const params = useParams()
   
-  const truck = useSelector(state => state.trucksState.trucks.find(tr => tr.truckid === parseInt(params.truckID)))
-  console.log(truck)
+  const truck = useSelector(truckByIdSelector(params.truckID))
+  
   const dispatch = useDispatch()
   const onCancel = () =>{
 

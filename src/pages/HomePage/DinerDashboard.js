@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 import { getTrucks } from '../../store/features/trucks'
 
 import * as ROUTES from '../../constants/routes'
+import { trucksSelector } from '../../store/features/trucks/trucks.selectors'
 
 const DinerDashboard = () => {
   const dispatch = useDispatch()
-  const trucks = useSelector(state => state.trucksState.trucks)
+  const trucks = useSelector(trucksSelector)
 
   useEffect(() => {
     dispatch(getTrucks())
