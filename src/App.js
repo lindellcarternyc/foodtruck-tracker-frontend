@@ -15,7 +15,7 @@ import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFound'
 import CreateTruckPage from './pages/CreateTruckPage'
 import FavoritesPage from './pages/FavoritesPage'
-import TruckPage from './pages/TruckPage'
+import TruckPage from './pages/ViewTruckPage'
 import EditTruckPage from './pages/EditTruckPage'
 import MenuItemPage from './pages/MenuItemPage'
 import CreateMenuItemPage from './pages/CreateMenuItemPage'
@@ -71,7 +71,7 @@ const App = () => {
 
           <PrivateRoute roles={[USER_ROLES.OPERATOR]} path={ROUTES.EDIT_TRUCK} component={EditTruckPage} />
           <PrivateRoute roles={[USER_ROLES.OPERATOR]} exact path={ROUTES.CREATE_TRUCK} component={CreateTruckPage}/>
-          <PrivateRoute roles={[USER_ROLES.OPERATOR]} path={ROUTES.VIEW_TRUCK} component={TruckPage} />
+          <PrivateRoute path={ROUTES.VIEW_TRUCK} component={TruckPage} />
           
           <PrivateRoute exact path={ROUTES.USER_INFO} component={UserInfoPage} />
           <PrivateRoute path={ROUTES.EDIT_USER} component={EditUserPage} />
