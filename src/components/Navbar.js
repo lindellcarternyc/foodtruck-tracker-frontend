@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-
+import * as ROUTES from '../constants/routes'
 // import user from '../icons/user-icon.svg'
 // import logo from '../icons/plant-color.svg'
 import Button from './styled/Button'
@@ -91,17 +91,20 @@ export default function NavBar(props) {
                     <h3>Food Truck TrackR</h3>
                 </div>
                 <div id='nav-buttons'>
+                    {Object.keys(ROUTES).map(path => {
+                        return <span key={path}><Button to={ROUTES[path]}>{path}</Button> </span>
+                    })}
                     <Button
-                        children='List'
+                        children='Trucks'
                         variant='nav'
                         size='nav'
-                        onClick={() => routeTo('/plantlist')} 
+                        onClick={() => routeTo('/trucks/:truckID')} 
                         />
                     <Button 
-                        children='+ New'
+                        children='User'
                         variant='nav'
                         size='nav'
-                        onClick={() => routeTo('/plantform')}
+                        onClick={() => routeTo('/user')}
                         />
                     <img 
                         

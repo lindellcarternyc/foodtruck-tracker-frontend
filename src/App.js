@@ -23,7 +23,7 @@ import EditMenuItemPage from './pages/EditMenuItemPage'
 import UserInfoPage from './pages/UserInfoPage'
 import EditUserPage from './pages/EditUserPage'
 
-// import NavBar from './components/Navbar'
+import NavBar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
 import { setUser } from './store/features/user'
 import { fetchCurrentUser } from './api-client'
@@ -44,11 +44,12 @@ const App = () => {
     <ThemeProvider theme={Theme}>
       <GlobalStyle />
       <div>
-        <nav>
+        <NavBar/>
+        {/* <nav>
           {Object.keys(ROUTES).map(path => {
             return <span key={path}><Link to={ROUTES[path]}>{path}</Link> </span>
           })}
-        </nav>
+        </nav> */}
         <Switch>
           {/* BASE ROUTES */}
           <Route exact path={ROUTES.HOME} component={HomePage} />
