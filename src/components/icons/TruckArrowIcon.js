@@ -6,7 +6,7 @@ export default function TruckArrowIcon(props) {
     const { size } = props;
 
     return (
-        <div className={`truck-search fa-layers fa-${size}`}>
+        <div className={`truck-arrow fa-${size}`}>
             <FontAwesomeIcon icon={faLocationArrow} mask={faTruck} transform='shrink-8 up-2 left-3.75'/>
         </div> 
     )
