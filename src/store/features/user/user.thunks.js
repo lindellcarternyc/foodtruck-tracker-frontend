@@ -36,3 +36,12 @@ export const updateUser = createAsyncThunk('user/update', async (data) => {
     throw err
   }
 })
+
+export const favoriteATruck = createAsyncThunk('user/favoriteATruck', async ({ userid, trucks }) => {
+  try {
+    const resposne = await apiClient.favoriteATruck({ trucks, userid  })
+    console.log('favorite a truck response', resposne)
+  } catch (err) {
+    throw err
+  }
+})
