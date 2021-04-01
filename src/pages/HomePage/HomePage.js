@@ -20,7 +20,7 @@ const HomePage = () => {
   } else if (currentUser.role === USER_ROLES.DINER) {
     return <DinerDashboard />
   }
-  return <OperatorDashboard />
+  return <OperatorDashboard currentUser={currentUser} />
 }
 
 export default HomePage

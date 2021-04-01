@@ -8,6 +8,7 @@ import FormFileInput from './components/FormFileInput'
 import FormInput from './components/FormInput'
 
 const INITIAL_FORM_VALUES = {
+  truckname: '',
   imageURL: '',
   imageUpload: null,
   cuisine: '',
@@ -48,6 +49,7 @@ const CreateTruckForm = (props) => {
                 disabled={values.imageURL && !values.imageURL.startsWith('blob:')}
               />
               <FormInput id="imageURL" labelText="Image Url" disabled={!!values.imageUpload} />
+              <FormInput id="truckname" labelText="Truck name" />
               <FormInput id="cuisine" labelText="Cuisine" />
               <Button type='reset' onClick={resetForm}>Clear</Button>
               <Button type='submit' disabled={isSubmitDisabled}>Submit</Button>
