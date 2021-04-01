@@ -29,14 +29,16 @@ export const fetchTrucksById = async (truckIDs) => {
 }
 
 export const createTruck = async (data) => {
+  const { truckname, cuisine, userid } = data
   const newTruck = {
-    cuisinetype: data.cuisine,
-    menus: []
+    truckname,
+    cuisinetype: cuisine,
+    users: [{ user: { userid }}]
   }
   try {
     const response = await axiosWithAuth().post(`/api/trucks/truck/add`, newTruck)
-    console.log('createTruck.response', response)
+    return response.data
   } catch (err) {
-    console.log('createTruck.err', err)
+    throw err.message
   }
 }
