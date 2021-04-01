@@ -3,8 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchTrucksById } from '../../api-client'
 import { setTrucks } from '../../store/features/trucks'
 
+import * as ROUTES from '../../constants/routes'
+import { useHistory } from 'react-router'
+
 const OperatorDashboard = ({ currentUser }) => {
   const trucks = useSelector(state => state.trucksState.trucks)
+  const history = useHistory()
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -25,7 +29,13 @@ const OperatorDashboard = ({ currentUser }) => {
       <h2>Operator Dashboard</h2>
       <div>
         <h3>Operator's Trucks</h3>
-        <p>{JSON.stringify(trucks)}</p>
+        {trucks.map(truck => {
+          return (
+            <div key={truck.truckid}>
+              <button onClick={() => history.push(ROUTES.VIEW_TRUCK.replace(/:truckID/, truck.truckid))}>View Truck {truck.truckname}</button>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

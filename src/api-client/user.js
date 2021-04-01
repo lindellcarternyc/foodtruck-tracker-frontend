@@ -21,9 +21,17 @@ export const fetchCurrentUser = async () => {
   }
 }
 
-export const updateUser = async ({ id, username, email }) => {
+export const updateUser = async (data) => {
+  const { id: userid, ...rest } = data
+
+  const toUpdate = { 
+    userid,
+    ...rest
+  }
+  
   try {
-    const response = await axiosWithAuth().put(`/api/users/user/${id}/update`, { username, email })
+    const response = await axiosWithAuth().patch(`/api/users/user/${userid}/update`, toUpdate)
+    console.log('api response', response)
   } catch (e) {
     
   }
