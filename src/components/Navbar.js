@@ -65,7 +65,7 @@ export default function NavBar(props) {
             <NavWrapper maxWidth={maxWidth} className={className}>
                 <div id='nav-logo' onClick={() => routeTo('/')}>
                     <img />
-                    <h3>Water My Plants</h3>
+                    <h3>Food Truck TrackR</h3>
                 </div>
                 <div id='nav-buttons'>
                     <Button
@@ -91,24 +91,26 @@ export default function NavBar(props) {
                     <h3>Food Truck TrackR</h3>
                 </div>
                 <div id='nav-buttons'>
-                    {Object.keys(ROUTES).map(path => {
+                    {/* {Object.keys(ROUTES).map(path => {
                         return <span key={path}><Button to={ROUTES[path]}>{path}</Button> </span>
-                    })}
+                    })} */}
+                    <Button 
+                        children='Favorites'
+                        variant='nav'
+                        size='nav'
+                        onClick={() => routeTo('/favorites')}
+                    />
                     <Button
-                        children='Trucks'
+                        children='Search'
                         variant='nav'
                         size='nav'
                         onClick={() => routeTo('/trucks/:truckID')} 
-                        />
+                    />
                     <Button 
                         children='User'
                         variant='nav'
                         size='nav'
                         onClick={() => routeTo('/user')}
-                        />
-                    <img 
-                        
-                        onClick={() => routeTo('/edituser')} 
                     />
                 </div>
             </NavWrapper>
