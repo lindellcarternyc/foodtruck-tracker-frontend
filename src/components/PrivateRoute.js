@@ -18,7 +18,7 @@ const PrivateRoute = ({ component: Component, roles, redirect, exact, path, ...r
         if (!currentUser || !acceptedRoles.includes(currentUser.role)) {
           return <Redirect to={redirectPath} />
         } 
-        return <Component {...routeProps} />
+        return <Component {...routeProps} currentUser={currentUser} />
       }}
     />
   )

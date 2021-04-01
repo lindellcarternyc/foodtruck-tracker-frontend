@@ -12,7 +12,9 @@ const trucksSlice = createSlice({
   name: 'trucks',
   initialState: INITIAL_TRUCKS_STATE,
   reducers: {
-
+    setTrucks: (state, action) => {
+      state.trucks = action.payload
+    }
   },
   extraReducers: builder => {
     builder
@@ -36,12 +38,17 @@ const trucksSlice = createSlice({
         state.isLoading = true
       })
       .addCase(createTruck.fulfilled, (state, action) => {
-        console.log('createTruck.fulfilled', state, action)
+        state.error = null
+        state.isLoading = false
+        state.trucks.push(action.payload)
       })
       .addCase(createTruck.rejected, (state, action) => {
-        console.log('createTruck.rejected', state, action)
+        state.isLoading = false
+        state.error = action.payload
       })
   }
 })
 
 export default trucksSlice.reducer
+
+export const { setTrucks } = trucksSlice.actions

@@ -42,7 +42,13 @@ const IMAGE_UPLOAD_SCHEMA = yup.mixed()
     then: yup.mixed().required('Please select an image file')
   })
 
+const TRUCK_NAME_SCHEMA = yup.string().trim()
+  .required('Please enter a truck name')
+  .min(5, 'A truck name must be at least 5 characters')
+  .max(20, 'A truck name can not be longer that 20 characters')
+
 export const CREATE_TRUCK_SCHEMA = yup.object().shape({
+  truckname: TRUCK_NAME_SCHEMA,
   cuisine: CUISINE_SCHEMA,
   imageUrl: IMAGE_URL_SCHEMA,
   imageUpload: IMAGE_UPLOAD_SCHEMA,
