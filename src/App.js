@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
@@ -11,7 +11,7 @@ import * as USER_ROLES from './constants/user-roles'
 
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
-import HomePage from './pages/HomePage'
+import HomePage from './pages/HomePage/'
 import NotFoundPage from './pages/NotFound'
 import CreateTruckPage from './pages/CreateTruckPage'
 import FavoritesPage from './pages/FavoritesPage'
