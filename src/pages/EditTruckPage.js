@@ -4,21 +4,31 @@ import { useParams } from 'react-router'
 import EditTruckForm from '../forms/EditTruckForm'
 import { truckByIdSelector } from '../store/features/trucks/trucks.selectors'
 
-const EditTruckPage = ({ currentUser }) => {
+import { editTruck } from '../store/features/trucks/trucks.thunks'
+
+import * as ROUTES from '../constants/routes'
+
+const EditTruckPage = ({ currentUser, history }) => {
   const params = useParams()
-  
+  const dispatch = useDispatch()
+
   const truck = useSelector(truckByIdSelector(params.truckID))
   
-  const dispatch = useDispatch()
   const onCancel = () =>{
 
   }
 
   const onSubmit = (data) => {
-    console.log(data)
-    // dispatch(edittruckfeature(data))
-    // .then(result => console.log(filler, result))
-    // .catch(err => console.log(filler, err))
+    const updateTruckData = {
+      truckname: data.truckname,
+      cuisinetype: data.cuisine,
+      truckid: truck.truckid
+    }
+
+    dispatch(editTruck(updateTruckData))
+      .then(_ => {
+        history.push(ROUTES.VIEW_TRUCK.replace(/:truckID/, truck.truckid))
+      })
   }
   return (
     <div>

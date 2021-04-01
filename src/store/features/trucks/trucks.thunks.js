@@ -19,3 +19,12 @@ export const createTruck = createAsyncThunk('trucks/createTruck', async (data) =
     throw err.message
   }
 })
+
+export const editTruck = createAsyncThunk('trucks/editTruck', async (data) => {
+  try {
+    const editedTruck = await apiClient.editTruck(data)
+    return editedTruck
+  } catch (err) {
+    throw err.message
+  }
+})
