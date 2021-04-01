@@ -1,7 +1,9 @@
+import EditMenuItemForm from '../forms/EditMenuItemForm'
+
 const EditMenuItemPage = () => {
   return (
     <div>
-      <h2>Edit Menu Item</h2>
+      <EditMenuItemForm/>
     </div>
   )
 }
