@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { getTrucks, createTruck  } from './trucks.thunks'
+import { getTrucks, createTruck, editTruck } from './trucks.thunks'
 
 const INITIAL_TRUCKS_STATE = {
   trucks: [],
@@ -45,6 +45,16 @@ const trucksSlice = createSlice({
       .addCase(createTruck.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.payload
+      })
+      .addCase(editTruck.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(editTruck.fulfilled, (state, action) => {
+        console.log('editTruck.fullfilled', action.payload)
+      })
+      .addCase(editTruck.rejected, (state, action) => {
+        
       })
   }
 })

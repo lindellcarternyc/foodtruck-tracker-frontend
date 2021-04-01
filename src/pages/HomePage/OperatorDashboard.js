@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchTrucksById } from '../../api-client'
+import { fetchTrucks } from '../../api-client'
 import { setTrucks } from '../../store/features/trucks'
 
 import * as ROUTES from '../../constants/routes'
@@ -8,22 +8,25 @@ import { useHistory } from 'react-router'
 import { trucksSelector } from '../../store/features/trucks/trucks.selectors'
 
 const OperatorDashboard = ({ currentUser }) => {
-  const trucks = useSelector(trucksSelector)
+  const trucks = useSelector(trucksSelector).map(t => {
+    return t
+  })
   const history = useHistory()
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const truckIDs = currentUser.trucks.map(entry => {
-      return entry.truck.truckid
+    fetchTrucks()
+      .then(t => dispatch(setTrucks(t)))
+      .catch(e => console.log(e))
+  }, [dispatch])
+
+  useEffect(() => {
+    const truckUsers = trucks.map(truck => {
+      console.log(truck)
+      return truck.users
     })
-    fetchTrucksById(truckIDs)
-      .then(trucks => {
-        dispatch(setTrucks(trucks))
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }, [currentUser, dispatch])
+    console.log(truckUsers)
+  }, [currentUser, trucks])
 
   return (
     <div>

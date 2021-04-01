@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { register, login, getCurrentUser, updateUser } from './user.thunks'
+import { register, login, getCurrentUser, updateUser, favoriteATruck } from './user.thunks'
 
 const INITIAL_USER_STATE = {
   user: null,
@@ -78,6 +78,12 @@ export const userSlice = createSlice({
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false
         state.error = null
+      })
+      .addCase(favoriteATruck.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(favoriteATruck.fulfilled, (state, action) => {
+        state.isLoading = false
       })
   }
 })

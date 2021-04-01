@@ -42,3 +42,12 @@ export const createTruck = async (data) => {
     throw err.message
   }
 }
+
+export const editTruck = async (data) => {
+  try {
+    const response = await axiosWithAuth().put(`/api/trucks/truck/${data.truckid}/update`, data)
+    return response.data
+  } catch (err) {
+    throw err.message
+  }
+}

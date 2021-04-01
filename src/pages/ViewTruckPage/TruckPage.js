@@ -15,7 +15,7 @@ const TruckPage = ({ currentUser }) => {
     if (currentUser.role === USER_ROLES.OPERATOR) {
       return <OperatorTruckPage truck={truck} />
     }
-    return <DinerTruckPage truck={truck}/>
+    return <DinerTruckPage truck={truck} currentUser={currentUser} />
   }
 
   return (
