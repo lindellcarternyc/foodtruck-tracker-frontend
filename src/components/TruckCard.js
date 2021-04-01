@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './styled/Button'
 
 export default function TruckCard(props) {
     const { truckname, cuisinetype, truckratings, currentLocation } = props.truck;
@@ -9,7 +10,7 @@ export default function TruckCard(props) {
             <div className='truck-info'>
                 <h5>{truckname}</h5>
                 <p>{cuisinetype}</p>
-                <p>Avg. Rating: {truckratings.reduce((acc, rating) => (acc + rating)) / truckratings.length}</p>
+                <p>Avg. Rating: {truckratings.reduce((acc, rating) => (acc + rating), 0) / truckratings.length}</p>
             </div>
             <div className='location-info'>
                 <p>Location: {currentLocation.location}</p>
