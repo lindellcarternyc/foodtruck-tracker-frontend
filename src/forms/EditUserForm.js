@@ -13,9 +13,7 @@ export default function EditUserForm(props) {
             <Formik 
                 initialValues={{
                   username,
-                  email,
-                  newPassword: '',
-                  confirmNewPassword: ''
+                  email
                 }}
                 validationSchema={EDIT_USER_FORM_SCHEMA}
                 onSubmit={onSubmit}
@@ -39,24 +37,6 @@ export default function EditUserForm(props) {
                                 id="email"
                                 type="email"
                                 labelText="Email"
-                            />
-                
-                            <FormInput 
-                                id="newPassword"
-                                type="password"
-                                labelText="New Password"
-                            />
-                
-                            <FormInput 
-                                id="confirmNewPassword"
-                                type="password"
-                                labelText="Confirm New Password"
-                            />
-
-                            <FormInput 
-                                id="password"
-                                type="password"
-                                labelText="Enter Password*"
                             />
                 
                             <Button disabled={!isFormValid || isLoading} type="submit">Save Info</Button>
