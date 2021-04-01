@@ -1,4 +1,6 @@
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { currentUserSelector } from '../../store/features/user/user.selectors'
 
 import * as ROUTES from '../../constants/routes'
 import * as USER_ROLES from '../../constants/user-roles'
@@ -9,14 +11,15 @@ import Button from '../../components/styled/Button'
 import DinerDashboard from './DinerDashboard'
 import OperatorDashboard from './OperatorDashboard'
 
-const HomePage = ({ currentUser }) => {
 
+
+const HomePage = () => {
+  const currentUser = useSelector(currentUserSelector)
   const history = useHistory()
 
   const routeTo = (location) => {
       history.push(location)
   }
-
   if (!currentUser) {
     return (
       <div>

@@ -28,7 +28,6 @@ export const login = async ({ username, password }) => {
     )
     setToken(response.data.access_token)
     const user = await fetchCurrentUser()
-    console.log('fetchCurrentUser: ', user)
     return user
   } catch (err ) {
     console.log('err', err)
