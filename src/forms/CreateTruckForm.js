@@ -14,13 +14,13 @@ const INITIAL_FORM_VALUES = {
 }
 
 const CreateTruckForm = (props) => {
-  const { submit, isLoading } = props
+  const { onSubmit, isLoading } = props
   return (
     <div>
       <h2>Create Truck</h2>
       <Formik
         initialValues={INITIAL_FORM_VALUES}
-        onSubmit={submit}
+        onSubmit={onSubmit}
         validationSchema={CREATE_TRUCK_SCHEMA}
       >
         {({ resetForm, setFieldValue, values, isSubmitting, isValid, touched, handleBlur }) => {

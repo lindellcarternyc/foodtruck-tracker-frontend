@@ -10,3 +10,12 @@ export const getTrucks = createAsyncThunk('trucks/getTrucks', async () => {
     throw err.message
   }
 })
+
+export const createTruck = createAsyncThunk('trucks/createTruck', async (data) => {
+  try {
+    const createdTruck = await apiClient.createTruck(data)
+    console.log(createdTruck)
+  } catch (err) {
+    throw err.message
+  }
+})
