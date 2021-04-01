@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import * as ROUTES from '../../constants/routes'
@@ -7,8 +6,7 @@ import * as USER_ROLES from '../../constants/user-roles'
 import DinerDashboard from './DinerDashboard'
 import OperatorDashboard from './OperatorDashboard'
 
-const HomePage = () => {
-  const currentUser = useSelector(state => state.userState.user)
+const HomePage = ({ currentUser }) => {
   if (!currentUser) {
     return (
       <div>

@@ -6,7 +6,7 @@ import { register } from '../store/features/user'
 
 import SignupForm from '../forms/SignupForm'
 
-const SignupPage = ({ history }) => {
+const SignupPage = ({ history, currentUser }) => {
   const isLoading = useSelector(store => store.userState.isLoading)
   const dispatch = useDispatch()
   const onSignup = async (data) => {
@@ -17,7 +17,6 @@ const SignupPage = ({ history }) => {
       })
   }
 
-  const currentUser = useSelector(state => state.userState.user !== null)
   if (currentUser) return <Redirect to={ROUTES.HOME}/>
 
   return (

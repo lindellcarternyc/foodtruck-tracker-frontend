@@ -6,8 +6,7 @@ import * as USER_ROLES from '../../constants/user-roles'
 import DinerTruckPage from './DinerTruckPage'
 import OperatorTruckPage from './OperatorTruckPage'
 
-const TruckPage = ({ history }) => {
-  const currentUser = useSelector(state => state.userState.user)
+const TruckPage = ({ history, currentUser }) => {
   const { truckID } = useParams()
   const truck = useSelector(state => state.trucksState.trucks.find(truck => truck.truckid === parseInt(truckID)))
 
