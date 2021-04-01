@@ -3,10 +3,18 @@ import { Formik } from 'formik'
 import FormSelect from '../../forms/components/FormSelect'
 import Button from '../../components/styled/Button'
 import Form from '../../components/styled/Form'
+import { useDispatch } from 'react-redux'
+import { rateTruck } from '../../store/features/trucks/trucks.thunks'
 
 
 const DinerTruckPage = (props) => {
   const { truck } = props
+  const dispatch = useDispatch()
+
+  const onRateTruck = (data) => {
+    dispatch(rateTruck(data))
+  }
+
   return (
     <div>
       <h2>Diner View Truck</h2>
@@ -16,9 +24,7 @@ const DinerTruckPage = (props) => {
         initialValues={{
           rating: '1'
         }}
-        onSubmit={() => {
-          console.log('rate truck')
-        }}
+        onSubmit={onRateTruck}
       >
         <Form>
         <FormSelect

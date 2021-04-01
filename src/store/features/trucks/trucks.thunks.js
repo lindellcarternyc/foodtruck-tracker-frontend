@@ -28,3 +28,11 @@ export const editTruck = createAsyncThunk('trucks/editTruck', async (data) => {
     throw err.message
   }
 })
+
+export const rateTruck = createAsyncThunk('trucks/rateTruck', async (data) => {
+  try {
+    console.log('rateTruck.thunk', data)
+  } catch (err) {
+    throw err
+  }
+})
