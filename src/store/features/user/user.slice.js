@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { register, login, getCurrentUser } from './user.thunks'
+import { register, login, getCurrentUser, updateUser } from './user.thunks'
 
 const INITIAL_USER_STATE = {
   user: null,
@@ -65,6 +65,19 @@ export const userSlice = createSlice({
         state.isLoading = false
         state.user = null
         state.error = action.payload
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.user = action.payload
+        state.error = null
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = null
       })
   }
 })

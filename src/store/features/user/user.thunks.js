@@ -29,5 +29,10 @@ export const login = createAsyncThunk('user/login', async ({ username, password 
 })
 
 export const updateUser = createAsyncThunk('user/update', async (data) => {
-  console.log('updateUser: ', data)
+  try {
+    await apiClient.updateUser(data)
+    return data
+  } catch (err) {
+    throw err
+  }
 })

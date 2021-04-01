@@ -4,14 +4,18 @@ import { updateUser } from '../store/features/user'
 
 import * as ROUTES from '../constants/routes';
 
-export default function EditUserPage({ history }) {
+export default function EditUserPage({ history, currentUser }) {
     const user = useSelector(state => state.userState.user)
     const dispatch = useDispatch()
 
     const onSave = (data) => {
-      dispatch(updateUser(data))
-        .then(res => {
-          console.log('onSaveUpdate: ', res)
+      const toUpdate = {
+        ...currentUser,
+        ...data
+      }
+      dispatch(updateUser(toUpdate))
+        .then(_ => {
+          history.push(ROUTES.USER_INFO)
         })
         .catch(err => {
           console.log('onSaveUpateErr: ', err)
