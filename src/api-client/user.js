@@ -33,10 +33,19 @@ export const updateUser = async (data) => {
     const response = await axiosWithAuth().patch(`/api/users/user/${userid}/update`, toUpdate)
     console.log('api response', response)
   } catch (e) {
-    
+    throw e
   }
 }
 
 export const deleteUser = async () => {
 
+}
+
+export const favoriteATruck = async ({ trucks, userid }) => {
+  try {
+    const response = await axiosWithAuth().patch(`/api/users/user/${userid}/update`, { trucks })
+    return response.data
+  } catch (e) {
+    throw e
+  }
 }
