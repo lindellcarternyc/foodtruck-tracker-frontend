@@ -2,8 +2,10 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import * as ROUTES from '../constants/routes'
-// import user from '../icons/user-icon.svg'
-// import logo from '../icons/plant-color.svg'
+
+import UserCircleIcon from './icons/UserCircleIcon'
+import TruckSearchIcon from './icons/TruckSearchIcon'
+import HeartCircleIcon from './icons/HeartCircleIcon'
 import Button from './styled/Button'
 
 const NavWrapper = styled.div`
@@ -11,6 +13,7 @@ const NavWrapper = styled.div`
     border-bottom: ${props => props.theme.navBarBorderBottom};
     padding: ${props => props.theme.navBarSpace};
     margin-bottom: ${props => props.theme.space};
+    size: ${props => props.theme.navIconSize};
 
     display: flex;
     justify-content: space-between;
@@ -86,26 +89,25 @@ export default function NavBar(props) {
     } else {
         return (
             <NavWrapper maxWidth={maxWidth} className={className}>
-                <div id='nav-logo' onClick={() => routeTo('/trucks/:truckID')}>
+                <div id='nav-logo' onClick={() => routeTo('/')}>
                     <img  />
                     <h3>Food Truck TrackR</h3>
                 </div>
                 <div id='nav-buttons'>
-                    {/* {Object.keys(ROUTES).map(path => {
-                        return <span key={path}><Button to={ROUTES[path]}>{path}</Button> </span>
-                    })} */}
                     <Button 
                         children='Homepage'
                         variant='nav'
                         size='nav'
                         onClick={() => routeTo('/')}
                     />
+                    {/* <HeartCircleIcon/> */}
                     <Button 
                         children='Favorites'
                         variant='nav'
                         size='nav'
                         onClick={() => routeTo('/favorites')}
                     />
+                    {/* <TruckSearchIcon/> */}
                     <Button
                         children='Search'
                         variant='nav'
@@ -118,6 +120,7 @@ export default function NavBar(props) {
                         size='nav'
                         onClick={() => routeTo('/trucks/new')}
                     />
+                    {/* <UserCircleIcon/> */}
                     <Button 
                         children='User'
                         variant='nav'

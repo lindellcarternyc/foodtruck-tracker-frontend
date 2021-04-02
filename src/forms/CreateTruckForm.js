@@ -6,6 +6,7 @@ import Form from '../components/styled/Form'
 import Button from '../components/styled/Button'
 import FormFileInput from './components/FormFileInput'
 import FormInput from './components/FormInput'
+import Container from '../components/styled/Container'
 
 const INITIAL_FORM_VALUES = {
   truckname: '',
@@ -18,6 +19,7 @@ const CreateTruckForm = (props) => {
   const { onSubmit, isLoading } = props
   return (
     <div>
+      <Container>
       <h2>Create Truck</h2>
       <Formik
         initialValues={INITIAL_FORM_VALUES}
@@ -39,6 +41,8 @@ const CreateTruckForm = (props) => {
 
           return (
             <Form>
+              <FormInput id="truckname" labelText="Truck name" />
+              <FormInput id="cuisine" labelText="Cuisine" />
               <img src={values.imageURL} alt="upload preview"/>
               <p>Current image URL: {values.imageURL}</p>
               <FormFileInput 
@@ -49,14 +53,13 @@ const CreateTruckForm = (props) => {
                 disabled={values.imageURL && !values.imageURL.startsWith('blob:')}
               />
               <FormInput id="imageURL" labelText="Image Url" disabled={!!values.imageUpload} />
-              <FormInput id="truckname" labelText="Truck name" />
-              <FormInput id="cuisine" labelText="Cuisine" />
               <Button type='reset' onClick={resetForm}>Clear</Button>
               <Button type='submit' disabled={isSubmitDisabled}>Submit</Button>
             </Form>
           )
         }}
       </Formik>
+      </Container>
     </div>
   )
 }

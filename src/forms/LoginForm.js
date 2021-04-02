@@ -5,6 +5,7 @@ import { LOGIN_FORM_SCHEMA } from './form-schema/auth.schema'
 import FormInput from './components/FormInput'
 import Form from '../components/styled/Form'
 import Button from '../components/styled/Button'
+import Container from '../components/styled/Container'
 
 const INITIAL_FORM_VALUES = {
   username: '',
@@ -14,6 +15,7 @@ const INITIAL_FORM_VALUES = {
 const LoginForm = ({ onSubmit, isLoading }) => {
   return (
     <div>
+      <Container>
       <h2>Login</h2>
       <Formik
         initialValues={INITIAL_FORM_VALUES}
@@ -39,6 +41,7 @@ const LoginForm = ({ onSubmit, isLoading }) => {
           )
         }}
       </Formik>
+      </Container>
     </div>
   )
 }

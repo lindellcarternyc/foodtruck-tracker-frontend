@@ -7,7 +7,7 @@ export default function HeartCircleIcon(props) {
 
     return (
         <div className={`heart-circle fa-${size}`}>
-            <FontAwesomeIcon icon={faHeart} mask={faCircle} transform='shrink-6.5 down-0.6'/>
+            <FontAwesomeIcon size={size} icon={faHeart} mask={faCircle} transform='shrink-6.5 down-0.6'/>
         </div> 
     )
 }

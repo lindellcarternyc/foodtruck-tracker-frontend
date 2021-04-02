@@ -7,6 +7,8 @@ import { truckByIdSelector } from '../../store/features/trucks/trucks.selectors'
 import DinerTruckPage from './DinerTruckPage'
 import OperatorTruckPage from './OperatorTruckPage'
 
+import Container from '../../components/styled/Container'
+
 const TruckPage = ({ currentUser }) => {
   const { truckID } = useParams()
   const truck = useSelector(truckByIdSelector(truckID))
@@ -20,8 +22,10 @@ const TruckPage = ({ currentUser }) => {
 
   return (
     <div>
+      <Container>
       <h1>Truck Page</h1>
       {renderTruckPage()}
+      </Container>
     </div>
   )
 }
