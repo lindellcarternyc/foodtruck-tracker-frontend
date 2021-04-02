@@ -4,6 +4,7 @@ import { Formik} from 'formik'
 
 import Form from '../components/styled/Form'
 import Button from '../components/styled/Button'
+import Container from '../components/styled/Container'
 import FormFileInput from './components/FormFileInput'
 import FormInput from './components/FormInput'
 
@@ -11,6 +12,7 @@ export default function EditTruckForm(props){
     const { onSubmit, onCancel, truckToEdit: { imageUrl, imageUpload, cuisinetype: cuisine, truckname }, isLoading } = props
     return (
         <div>
+          <Container>
             <h2>Edit Truck</h2>
             <Formik
                 initialValues={{
@@ -53,6 +55,7 @@ export default function EditTruckForm(props){
               )
             }}
             </Formik>
+            </Container>
         </div>
     )
 }

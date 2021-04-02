@@ -7,6 +7,9 @@ import * as ROUTES from '../../constants/routes'
 import { useHistory } from 'react-router'
 import { trucksSelector } from '../../store/features/trucks/trucks.selectors'
 
+import Container from '../../components/styled/Container'
+import Button from '../../components/styled/Button'
+
 const OperatorDashboard = ({ currentUser }) => {
   const trucks = useSelector(trucksSelector).map(t => {
     return t
@@ -30,18 +33,23 @@ const OperatorDashboard = ({ currentUser }) => {
 
   return (
     <div>
+      <Container>
       <h2>Operator Dashboard</h2>
       <div>
+        <Container>
         <h3>Operator's Trucks</h3>
         {trucks.map(truck => {
           return (
             <div key={truck.truckid}>
-              <button onClick={() => history.push(ROUTES.VIEW_TRUCK.replace(/:truckID/, truck.truckid))}>View Truck {truck.truckname}</button>
+              <Button onClick={() => history.push(ROUTES.VIEW_TRUCK.replace(/:truckID/, truck.truckid))}>View Truck {truck.truckname}</Button>
             </div>
           )
         })}
+        </Container>
       </div>
+      </Container>
     </div>
+
   )
 }
 
