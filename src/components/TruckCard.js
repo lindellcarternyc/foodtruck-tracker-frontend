@@ -28,7 +28,7 @@ export default function TruckCard(props) {
                 </Container>
             </div>
             <div className='favorite-button'>
-                <Button onClick={onClickFavorite}>{props.isFavoriteTruck ? 'Remove From' : 'Add To'} Favorites</Button>
+                <Button onClick={onClickFavorite}>{props.isFavoriteTruck ? 'Unfavorite' : 'Favorite'}</Button>
             </div>
         </div>
     )

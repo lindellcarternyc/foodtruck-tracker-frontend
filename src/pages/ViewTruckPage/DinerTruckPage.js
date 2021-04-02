@@ -11,7 +11,7 @@ import { favoriteATruck } from '../../store/features/user/user.thunks'
 
 
 const DinerTruckPage = (props) => {
-  const { truck, currentUser } = props
+  const { trucks, truck, currentUser } = props
   const dispatch = useDispatch()
 
   const onRateTruck = (data) => {
@@ -30,7 +30,7 @@ const DinerTruckPage = (props) => {
     <div>
       <Container>
       <h2>Diner View Truck</h2>
-      <p>{JSON.stringify(truck)}</p>
+      <p>{JSON.stringify(trucks)}</p>
       <Formik
         initialValues={{
           rating: '1'
@@ -49,7 +49,7 @@ const DinerTruckPage = (props) => {
             { value: '5', label: '5'},
           ]}
         />
-        <Button onClick={favoriteTruck}>Add Truck to Favorites</Button>
+        <Button onClick={favoriteTruck}>Add to Favorites</Button>
         </Form>
       </Formik>
       </Container>
