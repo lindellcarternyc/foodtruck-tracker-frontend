@@ -1,32 +1,30 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchTrucks } from '../../api-client'
+import { fetchTrucks, fetchTrucksById } from '../../api-client'
 import { setTrucks } from '../../store/features/trucks'
 
 import * as ROUTES from '../../constants/routes'
+import * as USER_ROLES from '../../constants/user-roles'
+
 import { useHistory } from 'react-router'
 import { trucksSelector } from '../../store/features/trucks/trucks.selectors'
 
 const OperatorDashboard = ({ currentUser }) => {
-  const trucks = useSelector(trucksSelector).map(t => {
-    return t
-  })
+  const trucks = useSelector(trucksSelector)
   const history = useHistory()
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetchTrucks()
-      .then(t => dispatch(setTrucks(t)))
-      .catch(e => console.log(e))
-  }, [dispatch])
+    if (currentUser.role === USER_ROLES.DINER) {
+      return
+    }
 
-  useEffect(() => {
-    const truckUsers = trucks.map(truck => {
-      console.log(truck)
-      return truck.users
-    })
-    console.log(truckUsers)
-  }, [currentUser, trucks])
+    const ownedTruckIds = currentUser.trucks.map(({ truck }) => truck.truckid)
+    fetchTrucksById(ownedTruckIds)
+      .then(ownedTrucks => {
+        dispatch(setTrucks(ownedTrucks))
+      })
+  }, [dispatch, currentUser])
 
   return (
     <div>

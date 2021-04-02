@@ -22,6 +22,7 @@ export const fetchTrucksById = async (truckIDs) => {
   try {
     const truckRequests = truckIDs.map(fetchTruckById)
     const trucks = await Promise.all(truckRequests)
+    console.log(trucks)
     return trucks
   } catch (err) {
     throw err
