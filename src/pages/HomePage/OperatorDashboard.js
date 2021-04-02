@@ -12,14 +12,16 @@ import { trucksSelector } from '../../store/features/trucks/trucks.selectors'
 import Container from '../../components/styled/Container'
 import Button from '../../components/styled/Button'
 
-const OperatorDashboard = ({ currentUser }) => {
+const OperatorDashboard = ({ currentUser, history }) => {
   const trucks = useSelector(trucksSelector)
-  const history = useHistory()
+  // const history = useHistory()
   const dispatch = useDispatch()
 
   useEffect(() => {
     if (currentUser.role === USER_ROLES.DINER) {
-      return
+      return(
+        history.push(ROUTES.HOME)
+      )
     }
 
     const ownedTruckIds = currentUser.trucks.map(({ truck }) => truck.truckid)

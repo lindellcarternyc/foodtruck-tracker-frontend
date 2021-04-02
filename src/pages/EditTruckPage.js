@@ -11,7 +11,9 @@ import * as ROUTES from '../constants/routes'
 const EditTruckPage = ({ currentUser, history }) => {
   const params = useParams()
   const dispatch = useDispatch()
-
+  const routeTo = (location) => {
+    history.push(location)
+  }
   const truck = useSelector(truckByIdSelector(params.truckID))
   
   const onCancel = () =>{
@@ -32,7 +34,7 @@ const EditTruckPage = ({ currentUser, history }) => {
   }
   return (
     <div>
-      <EditTruckForm onSubmit={onSubmit} onCancel={onCancel} truckToEdit={truck} />
+      <EditTruckForm onSubmit={onSubmit} onCancel={onCancel} routeTo={routeTo} truckToEdit={truck} />
     </div>
   )
 }

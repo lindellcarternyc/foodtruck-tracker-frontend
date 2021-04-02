@@ -1,6 +1,7 @@
 import { Formik} from 'formik'
 
 // import { EDIT_TRUCK_SCHEMA } from './form-schema/truck.schema'
+import * as ROUTES from '../constants/routes'
 
 import Form from '../components/styled/Form'
 import Button from '../components/styled/Button'
@@ -9,7 +10,7 @@ import FormFileInput from './components/FormFileInput'
 import FormInput from './components/FormInput'
 
 export default function EditTruckForm(props){
-    const { onSubmit, onCancel, truckToEdit: { imageUrl, imageUpload, cuisinetype: cuisine, truckname }, isLoading } = props
+    const { onSubmit, onCancel, routeTo, truckToEdit: { imageUrl, imageUpload, cuisinetype: cuisine, truckname }, isLoading } = props
     return (
         <div>
           <Container>
@@ -49,6 +50,8 @@ export default function EditTruckForm(props){
                   <FormInput id="imageURL" labelText="Image Url" disabled={!!values.imageUpload} />
                   <FormInput id="truckname" labelText="Truck name" />
                   <FormInput id="cuisine" labelText="Cuisine" />
+                  {/* <Button onClick={()=> routeTo(ROUTES.EDIT_MENU_ITEM)}>Edit Menu</Button>
+                  <Button onClick={()=> routeTo(ROUTES.CREATE_MENU_ITEM)}>New Menu Item</Button> */}
                   <Button disabled={!isFormValid || isLoading} type="submit">Save Info</Button>
                   <Button disabled={isLoading} type="button" onClick={onCancel}>Cancel</Button>
                 </Form>
