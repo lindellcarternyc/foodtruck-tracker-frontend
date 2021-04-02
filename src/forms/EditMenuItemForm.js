@@ -1,36 +1,28 @@
 import { Formik } from 'formik';
 import FormInput from './components/FormInput'
 import FormFileInput from './components/FormFileInput'
-//import schema
+import { EDIT_MENU_ITEM_SCHEMA } from './form-schema/menu.schema'
 
 import Form from '../components/styled/Form'
 import Button from '../components/styled/Button'
 import Container from '../components/styled/Container'
 
-const INITIAL_FORM_VALUES = {
-    itemName: '',
-    itemDescription: '',
-    imageURL: '',
-    imageUpload: null,
-    itemPrice: ''
-}
-
 export default function EditMenuItemForm(props) {
+    // Most of this should still come from props
     const { onSubmit, onCancel, itemToEdit: { itemName, itemDescription, imageURL, imageUpload, itemPrice }, isLoading } = props
     return (
         <div>
             <Container>
             <h2>Edit Menu Item</h2>
             <Formik 
-                // initialValues={{
-                //   itemName,
-                //   itemDescription,
-                //   imageURL,
-                //   imageUpload,
-                //   itemPrice
-                // }}
-                initialValues={INITIAL_FORM_VALUES}
-                // validationSchema={EDIT_USER_FORM_SCHEMA}
+                initialValues={{
+                  itemName,
+                  itemDescription,
+                  imageURL,
+                  imageUpload,
+                  itemPrice
+                }}
+                validationSchema={EDIT_MENU_ITEM_SCHEMA}
                 onSubmit={onSubmit}
             >
                 {({ setFieldValue, values, errors, isValid, touched, handleBlur }) => {
