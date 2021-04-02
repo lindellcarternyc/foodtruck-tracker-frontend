@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { register, login, getCurrentUser, updateUser, favoriteATruck } from './user.thunks'
+import { register, login, getCurrentUser, updateUser, toggleFavorite } from './user.thunks'
 
 const INITIAL_USER_STATE = {
   user: null,
@@ -79,11 +79,17 @@ export const userSlice = createSlice({
         state.isLoading = false
         state.error = null
       })
-      .addCase(favoriteATruck.pending, (state) => {
+      .addCase(toggleFavorite.pending, (state) => {
         state.isLoading = true
+        state.error = null
       })
-      .addCase(favoriteATruck.fulfilled, (state, action) => {
+      .addCase(toggleFavorite.fulfilled, (state, action) => {
+        console.log('toggleFavorite.fulfilled', state, action)
         state.isLoading = false
+      })
+      .addCase(toggleFavorite.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload
       })
   }
 })

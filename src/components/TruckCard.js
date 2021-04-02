@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
 
 export default function TruckCard(props) {
-    const { truckname, cuisinetype, truckratings, currentLocation } = props.truck;
+    const { truckname, cuisinetype, truckratings, currentLocation, truckid } = props.truck;
+
+    const onClickFavorite = () => {
+      props.onClickFavorite(truckid)
+    }
 
     return (
         <div className='truck-card'>
@@ -24,7 +28,7 @@ export default function TruckCard(props) {
                 </Container>
             </div>
             <div className='favorite-button'>
-                <Button onClick={() => console.log('toggle favorite')}>Add Truck to Favorites</Button>
+                <Button onClick={onClickFavorite}>{props.isFavoriteTruck ? 'Remove From' : 'Add To'} Favorites</Button>
             </div>
         </div>
     )

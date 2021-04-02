@@ -31,7 +31,7 @@ const HomePage = () => {
       </div>
     )
   } else if (currentUser.role === USER_ROLES.DINER) {
-    return <DinerDashboard />
+    return <DinerDashboard currentUser={currentUser} />
   }
   return <OperatorDashboard currentUser={currentUser} />
 }

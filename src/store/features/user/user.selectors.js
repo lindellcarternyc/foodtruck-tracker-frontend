@@ -3,3 +3,16 @@ export const currentUserSelector = (state) => {
 }
 
 export const isUserStateLoadingSelector = (state) => state.userState.isLoading
+
+export const isFavoriteTruckSelector = state => (truckid) => {
+  const currentUser = currentUserSelector(state)
+  if (!currentUser) return false
+
+  const currentUserTrucks = currentUser.trucks
+  for (const truckObj of currentUserTrucks) {
+     if  (truckObj.truck.truckid == truckid) {
+       return true
+     }
+  }
+  return false
+}

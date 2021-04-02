@@ -45,3 +45,12 @@ export const favoriteATruck = createAsyncThunk('user/favoriteATruck', async ({ u
     throw err
   }
 })
+
+export const toggleFavorite = createAsyncThunk('user/toggleFavorite', async({ userid, trucks }) => {
+  try {
+    const response = await apiClient.toggleFavoriteTruck({ userid, trucks })
+    console.log(response)
+  } catch (err) {
+    throw err
+  }
+})

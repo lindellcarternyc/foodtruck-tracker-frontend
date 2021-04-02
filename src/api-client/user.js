@@ -49,3 +49,13 @@ export const favoriteATruck = async ({ trucks, userid }) => {
     throw e
   }
 }
+
+export const toggleFavoriteTruck = async ({ userid, trucks }) => {
+  try {
+    const response = await axiosWithAuth().patch(`/api/users/user/${userid}/update`, { trucks })
+    console.log('toggleFavoriteTruck', response)
+    return response.data
+  } catch (e) {
+    throw e
+  }
+}
