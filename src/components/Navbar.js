@@ -1,7 +1,9 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import * as ROUTES from '../constants/routes'
+import { useSelector } from 'react-redux'
+import { currentUserSelector } from '../store/features/user/user.selectors'
+import * as USER_ROLES from '../constants/user-roles'
 
 import UserCircleIcon from './icons/UserCircleIcon'
 import TruckSearchIcon from './icons/TruckSearchIcon'
@@ -56,14 +58,15 @@ const NavWrapper = styled.div`
 `
 
 export default function NavBar(props) {
-    
     const { maxWidth, className, userID } = props
+    const currentUser = useSelector(currentUserSelector)
     const history = useHistory()
 
     const routeTo = (location) => {
         history.push(location)
     }
-    if (userID === null ){
+
+    if (!currentUser){
         return(
             <NavWrapper maxWidth={maxWidth} className={className}>
                 <div id='nav-logo' onClick={() => routeTo('/')}>
@@ -86,7 +89,7 @@ export default function NavBar(props) {
                 </div>
             </NavWrapper>
         )
-    } else {
+    } else if (currentUser.role === USER_ROLES.DINER) {
         return (
             <NavWrapper maxWidth={maxWidth} className={className}>
                 <div id='nav-logo' onClick={() => routeTo('/')}>
@@ -95,32 +98,23 @@ export default function NavBar(props) {
                 </div>
                 <div id='nav-buttons'>
                     <Button 
-                        children='Homepage'
+                        children='Home'
                         variant='nav'
                         size='nav'
                         onClick={() => routeTo('/')}
                     />
-                    {/* <HeartCircleIcon/> */}
                     <Button 
                         children='Favorites'
                         variant='nav'
                         size='nav'
                         onClick={() => routeTo('/favorites')}
                     />
-                    {/* <TruckSearchIcon/> */}
                     <Button
                         children='Search'
                         variant='nav'
                         size='nav'
                         onClick={() => routeTo('/trucks/:truckID')} 
                     />
-                    <Button 
-                        children='Create Truck'
-                        variant='nav'
-                        size='nav'
-                        onClick={() => routeTo('/trucks/new')}
-                    />
-                    {/* <UserCircleIcon/> */}
                     <Button 
                         children='User'
                         variant='nav'
@@ -131,4 +125,33 @@ export default function NavBar(props) {
             </NavWrapper>
         )
     }
+    return (
+        <NavWrapper maxWidth={maxWidth} className={className}>
+        <div id='nav-logo' onClick={() => routeTo('/')}>
+            <img  />
+            <h3>Food Truck TrackR</h3>
+        </div>
+        <div id='nav-buttons'>
+            <Button 
+                children='Home'
+                variant='nav'
+                size='nav'
+                onClick={() => routeTo('/')}
+            />
+            <Button 
+                children='+ Truck'
+                variant='nav'
+                size='nav'
+                onClick={() => routeTo('/trucks/new')}
+            />
+            <Button 
+                children='User'
+                variant='nav'
+                size='nav'
+                onClick={() => routeTo('/user')}
+            />
+        </div>
+    </NavWrapper>
+    )
 }
+

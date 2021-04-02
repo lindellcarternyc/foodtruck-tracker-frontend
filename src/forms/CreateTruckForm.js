@@ -40,7 +40,7 @@ const CreateTruckForm = (props) => {
           const isSubmitDisabled = isSubmitting || !isValid || isLoading || Object.keys(touched).length === 0
 
           return (
-            <Form>
+            <Form onSubmit={onSubmit}>
               <FormInput id="truckname" labelText="Truck name" />
               <FormInput id="cuisine" labelText="Cuisine" />
               <img src={values.imageURL} alt="upload preview"/>
