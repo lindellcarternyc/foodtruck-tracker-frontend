@@ -10,7 +10,7 @@ export const isFavoriteTruckSelector = state => (truckid) => {
 
   const currentUserTrucks = currentUser.trucks
   for (const truckObj of currentUserTrucks) {
-     console.log('currentUserTruck', truckObj.truck.truckid == truckid)
+     return truckObj.truck.truckid == truckid
   }
   return false
 }

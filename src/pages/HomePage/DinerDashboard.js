@@ -25,7 +25,7 @@ const DinerDashboard = ({ currentUser} ) => {
     console.log('currentFavorites', currentFavorites)
     if (isFavoriteTruck(truckid)) {
       console.log('remove this truck!!!')
-      newFavorites = newFavorites.filter()
+      newFavorites = newFavorites.filter(truckObj => truckObj.truck.truckid != truckid)
     } else {
       newFavorites.push({ truck: { truckid } })
     }
