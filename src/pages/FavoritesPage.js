@@ -1,3 +1,5 @@
+import TruckCard from '../components/TruckCard'
+
 const FavoritesPage = ({ currentUser }) => {
   return (
     <div>
@@ -5,7 +7,8 @@ const FavoritesPage = ({ currentUser }) => {
       {currentUser.trucks.map(t => {
         // This is the shape of the data being returned from the api
         return <p key={t.truck.truckid}>{JSON.stringify(t)}</p>
-      })}
+        // return <TruckCard key={t.truck.truckid} truck={t}/>      
+        })}
     </div>
   )
 }

@@ -33,7 +33,7 @@ const HomePage = () => {
   } else if (currentUser.role === USER_ROLES.DINER) {
     return <DinerDashboard currentUser={currentUser} />
   }
-  return <OperatorDashboard currentUser={currentUser} />
+  return <OperatorDashboard history={history} routeTo={routeTo} currentUser={currentUser} />
 }
 
 export default HomePage
