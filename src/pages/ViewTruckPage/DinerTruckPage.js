@@ -3,9 +3,11 @@ import { Formik } from 'formik'
 import FormSelect from '../../forms/components/FormSelect'
 import Button from '../../components/styled/Button'
 import Form from '../../components/styled/Form'
+import Container from '../../components/styled/Container'
 import { useDispatch } from 'react-redux'
 import { rateTruck } from '../../store/features/trucks/trucks.thunks'
 import { favoriteATruck } from '../../store/features/user/user.thunks'
+
 
 
 const DinerTruckPage = (props) => {
@@ -26,9 +28,9 @@ const DinerTruckPage = (props) => {
 
   return (
     <div>
+      <Container>
       <h2>Diner View Truck</h2>
       <p>{JSON.stringify(truck)}</p>
-      <Button onClick={favoriteTruck}>Add Truck to Favorites</Button>
       <Formik
         initialValues={{
           rating: '1'
@@ -47,9 +49,10 @@ const DinerTruckPage = (props) => {
             { value: '5', label: '5'},
           ]}
         />
-        <Button type="submit">Add Truck to Favorites</Button>
+        <Button onClick={favoriteTruck}>Add Truck to Favorites</Button>
         </Form>
       </Formik>
+      </Container>
     </div>
   )
 }

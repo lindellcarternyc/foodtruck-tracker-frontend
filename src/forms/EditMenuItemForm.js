@@ -5,6 +5,7 @@ import FormFileInput from './components/FormFileInput'
 
 import Form from '../components/styled/Form'
 import Button from '../components/styled/Button'
+import Container from '../components/styled/Container'
 
 const INITIAL_FORM_VALUES = {
     itemName: '',
@@ -18,6 +19,7 @@ export default function EditMenuItemForm(props) {
     const { onSubmit, onCancel, itemToEdit: { itemName, itemDescription, imageURL, imageUpload, itemPrice }, isLoading } = props
     return (
         <div>
+            <Container>
             <h2>Edit Menu Item</h2>
             <Formik 
                 // initialValues={{
@@ -78,6 +80,7 @@ export default function EditMenuItemForm(props) {
                     )
                 }}
             </Formik>
+            </Container>
         </div>
     )
 }
