@@ -1,5 +1,5 @@
 import { Formik } from 'formik'
-// put schema here
+import { CREATE_MENU_ITEM_SCHEMA } from './form-schema/menu.schema'
 
 import Form from '../components/styled/Form'
 import Button from '../components/styled/Button'
@@ -23,7 +23,7 @@ export default function CreateMenuItemForm(props) {
             <Formik
                 initialValues={INITIAL_FORM_VALUES}
                 onSubmit={onSubmit}
-                // validationSchema
+                validationSchema={CREATE_MENU_ITEM_SCHEMA}
             >
                 {({ resetForm, setFieldValue, values, isSubmitting, isValid, touched, handleBlur }) => {
                     const onChangeImageUpload = (imageFile) => {
