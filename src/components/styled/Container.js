@@ -8,6 +8,10 @@ const ContainerWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    p {
+        font-size: 1.5rem;
+    }
 `
 
 export default function Container(props) {

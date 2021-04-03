@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { rateTruck } from '../../store/features/trucks/trucks.thunks'
 import { favoriteATruck } from '../../store/features/user/user.thunks'
 
+import TruckCard from '../../components/TruckCard'
 
 
 const DinerTruckPage = (props) => {
@@ -25,12 +26,25 @@ const DinerTruckPage = (props) => {
     ]
     dispatch(favoriteATruck({ userid: currentUser.id, trucks }))
   }
+  // const uiTruck = {
+  //   ...truck,
+  //   currentLocation: {}
+  // }
 
   return (
     <div>
       <Container>
       <h2>Diner View Truck</h2>
-      <p>{JSON.stringify(trucks)}</p>
+      {/* <p>{JSON.stringify(trucks)}</p> */}
+      {trucks.map(truck => {
+        const uiTruck = {
+          ...truck,
+          currentLocation: {}
+        }
+        return (
+          <TruckCard truck={uiTruck} key={truck.truckid}/>
+        )
+      })}
       <Formik
         initialValues={{
           rating: '1'

@@ -97,12 +97,12 @@ export default function NavBar(props) {
                     <h3>Food Truck TrackR</h3>
                 </div>
                 <div id='nav-buttons'>
-                    <Button 
+                    {/* <Button 
                         children='Home'
                         variant='nav'
                         size='nav'
                         onClick={() => routeTo('/')}
-                    />
+                    /> */}
                     <Button 
                         children='Favorites'
                         variant='nav'
@@ -132,12 +132,12 @@ export default function NavBar(props) {
             <h3>Food Truck TrackR</h3>
         </div>
         <div id='nav-buttons'>
-            <Button 
+            {/* <Button 
                 children='Home'
                 variant='nav'
                 size='nav'
                 onClick={() => routeTo('/')}
-            />
+            /> */}
             <Button 
                 children='+ Truck'
                 variant='nav'
