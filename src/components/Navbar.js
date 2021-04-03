@@ -70,7 +70,7 @@ export default function NavBar(props) {
         return(
             <NavWrapper maxWidth={maxWidth} className={className}>
                 <div id='nav-logo' onClick={() => routeTo('/')}>
-                    <img />
+
                     <h3>Food Truck TrackR</h3>
                 </div>
                 <div id='nav-buttons'>
@@ -93,7 +93,7 @@ export default function NavBar(props) {
         return (
             <NavWrapper maxWidth={maxWidth} className={className}>
                 <div id='nav-logo' onClick={() => routeTo('/')}>
-                    <img  />
+
                     <h3>Food Truck TrackR</h3>
                 </div>
                 <div id='nav-buttons'>
@@ -128,7 +128,7 @@ export default function NavBar(props) {
     return (
         <NavWrapper maxWidth={maxWidth} className={className}>
         <div id='nav-logo' onClick={() => routeTo('/')}>
-            <img  />
+
             <h3>Food Truck TrackR</h3>
         </div>
         <div id='nav-buttons'>
